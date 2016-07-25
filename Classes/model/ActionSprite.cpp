@@ -35,7 +35,7 @@ codechiev::getAction(const struct AnimationStruct& anim)
     {
         return nullptr;
     }
-    auto spriteAnim = Animation::createWithSpriteFrames(frames, anim.duration / (anim.end-anim.begin));//
+    auto spriteAnim = Animation::createWithSpriteFrames(frames, anim.duration / (anim.end>anim.begin?anim.end-anim.begin:1));//
     Animate* action = Animate::create(spriteAnim);
     action->retain();
     return action;

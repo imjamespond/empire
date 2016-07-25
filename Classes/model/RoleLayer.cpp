@@ -35,6 +35,7 @@ Role::initRole()
     struct RoleStruct &st = ac->roleStructMap[id];
     
     role = RoleSprite::create();
+    role->setScale(3);
     role->walkAction = getAction(st.walk);
     role->attackAction = getAction(st.attack);
     role->idleAction = getAction(st.idle);

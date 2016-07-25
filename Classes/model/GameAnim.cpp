@@ -32,14 +32,14 @@ YanWangAnim::play()
     role->role->stopAllActions();
     role->role->runAction(Sequence::create(role->role->attackAction,
                                            CallFunc::create(std::bind([=](RoleSprite* role,
-                                                                          Game::Player* target,
+                                                                          Game::Player* enemy,
                                                                           int hp, int maxhp){
         base::Singleton<ActionQueue>::get()->playNext();
         role->idle();
         
         GameMenuLayer *gm = gGameLayer->gameMenu;
-        gm->updateHealth(*target, hp, maxhp);
-    }, role->role, player1, hp, player1->maxHp) ), nullptr));
+        gm->updateHealth(*enemy, hp, maxhp);
+    }, role->role, enemy, hp, enemy->maxHp) ), nullptr));
     
     scene->sonic->getEmitter()->resetSystem();
     scene->sonic->setPosition(role->getPosition());
@@ -49,7 +49,7 @@ YanWangAnim::play()
         gGameLayer->runAction(ScreenShake::create(.5, 5));
     }, scene->sonic)), nullptr));
     
-    gNotificationLayer->onError(StringUtils::format("YanWangAnim hurt: %d",hurt));
+    gNotificationLayer->onError(StringUtils::format("阎王 伤害: %d",hurt));
 }
 void
 WuChangAnim::play()
@@ -58,7 +58,16 @@ WuChangAnim::play()
         base::Singleton<ActionQueue>::get()->playNext();
     }) );
     gNotificationLayer->runAction(Sequence::create(DelayTime::create(1), cb, nullptr));
-    gNotificationLayer->onError(StringUtils::format("WuChangAnim prolong: %d",prolong));
+    gNotificationLayer->onError(StringUtils::format("无常 延长: %d",prolong));
+    
+    role->role->stopAllActions();
+    role->role->runAction(Sequence::create(role->role->attackAction,
+                                           CallFunc::create(std::bind([=](RoleSprite* role){
+        base::Singleton<ActionQueue>::get()->playNext();
+        role->idle();
+    }, role->role) ), cb,nullptr));
+    
+    self->prolong+=prolong;
 }
 void
 MengPoAnim::play()
@@ -66,8 +75,19 @@ MengPoAnim::play()
     auto cb = CallFunc::create(std::bind([=](){
         base::Singleton<ActionQueue>::get()->playNext();
     }) );
-    gNotificationLayer->runAction(Sequence::create(DelayTime::create(1), cb, nullptr));
-    gNotificationLayer->onError(StringUtils::format("MengPoAnim heal: %d",heal));
+    gNotificationLayer->onError(StringUtils::format("孟婆 恢复: %d",heal));
+    
+    role->role->stopAllActions();
+    role->role->runAction(Sequence::create(role->role->attackAction,
+                                           CallFunc::create(std::bind([=](RoleSprite* role,
+                                                                          Game::Player* self,
+                                                                          int hp, int maxhp){
+        base::Singleton<ActionQueue>::get()->playNext();
+        role->idle();
+        
+        GameMenuLayer *gm = gGameLayer->gameMenu;
+        gm->updateHealth(*self, hp, maxhp);
+    }, role->role, self, hp, self->maxHp) ), cb,nullptr));
 }
 void
 NiuTouAnim::play()
@@ -75,8 +95,14 @@ NiuTouAnim::play()
     auto cb = CallFunc::create(std::bind([=](){
         base::Singleton<ActionQueue>::get()->playNext();
     }) );
-    gNotificationLayer->runAction(Sequence::create(DelayTime::create(1), cb, nullptr));
-    gNotificationLayer->onError(StringUtils::format("NiuTouAnim shorten: %d",shorten));
+    gNotificationLayer->onError(StringUtils::format("牛头 缩短: %d",shorten));
+    
+    role->role->stopAllActions();
+    role->role->runAction(Sequence::create(role->role->attackAction,
+                                           CallFunc::create(std::bind([=](RoleSprite* role){
+        base::Singleton<ActionQueue>::get()->playNext();
+        role->idle();
+    }, role->role) ), cb, nullptr));
 }
 void
 AnubisAnim::play()
@@ -169,7 +195,7 @@ AngelAnim::play()
         
         GameMenuLayer *gm = gGameLayer->gameMenu;
         gm->updateHealth(*target, hp, maxhp);
-    }, player0, hp, player0->maxHp));
+    }, self, hp, self->maxHp));
     gNotificationLayer->runAction(Sequence::create(DelayTime::create(1), cb, nullptr));
     gNotificationLayer->onError(StringUtils::format("AngelAnim heal: %d",this->heal));
 }
@@ -183,7 +209,7 @@ TitanAnim::play()
         
         GameMenuLayer *gm = gGameLayer->gameMenu;
         gm->updateHealth(*target, hp, maxhp);
-    }, player1, hp, player1->maxHp));
+    }, enemy, hp, enemy->maxHp));
     gNotificationLayer->runAction(Sequence::create(DelayTime::create(1), cb, nullptr));
     gNotificationLayer->onError(StringUtils::format("TitanAnim hurt: %d",this->hurt));
 }

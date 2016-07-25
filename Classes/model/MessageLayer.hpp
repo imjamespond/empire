@@ -43,6 +43,8 @@ namespace codechiev
     public:
         CREATE_FUNC(BufuBtn);
         void onPress(cocos2d::Ref*);
+        
+        std::string key;
     };
     class RedeemBtn : public cocos2d::ui::Button
     {

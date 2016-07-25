@@ -167,7 +167,7 @@ namespace codechiev
     {
     public:
         GAME_ANIM(MedusaAnim, ){
-            player1->petrify=1;
+            enemy->petrify=1;
         }
         
         void play();

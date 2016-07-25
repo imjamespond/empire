@@ -33,7 +33,7 @@ namespace codechiev
         {
             Player():
             uid(0),hp(0),maxHp(0),defense(0),level(0),type(0),
-            petrify(0),prolong(0.0f),opertime(0.0f)
+            petrify(0),prolong(0.0f),shorten(0.0f), opertime(0.0f)
             {
                 ::memset(swap, 0, sizeof swap);
                 ::memset(roles, 0, sizeof roles);
@@ -54,6 +54,7 @@ namespace codechiev
             //buff
             int petrify;
             float prolong;
+            float shorten;
             //time
             float opertime;
             //ui
@@ -99,9 +100,9 @@ namespace codechiev
     class GameAnim
     {
     public:
-        GameAnim(GameSceneLayer *s, Game::Player* p0, Game::Player* p1,
+        GameAnim(GameSceneLayer *s, Game::Player* sf, Game::Player* en,
                  Role *r, Role *t):
-        scene(s),player0(p0),player1(p1),role(r),target(t){}
+        scene(s),self(sf),enemy(en),role(r),target(t){}
         virtual ~GameAnim(){cocos2d::log("~GameAnim");}
         
         virtual void play()=0;
@@ -109,8 +110,8 @@ namespace codechiev
         GameSceneLayer *scene;
         Role* role;
         Role* target;
-        Game::Player* player0;
-        Game::Player* player1;
+        Game::Player* self;
+        Game::Player* enemy;
     };
 
 #include <boost/preprocessor/seq/for_each.hpp>
@@ -119,9 +120,9 @@ namespace codechiev
 #define ARG_SEQ(R, data, i, TYPE_AND_NAME) \
     , BOOST_PP_TUPLE_ELEM(2, 0, TYPE_AND_NAME) BOOST_PP_TUPLE_ELEM(2, 1, TYPE_AND_NAME)
 #define GAME_ANIM(clazz, arg_seq) explicit clazz(GameSceneLayer *s,\
-    Game::Player* player0,Game::Player* player1,\
+    Game::Player* sf,Game::Player* en,\
     Role *r, Role *t\
-    BOOST_PP_SEQ_FOR_EACH_I( ARG_SEQ, , arg_seq)):GameAnim(s, player0, player1, r, t)
+    BOOST_PP_SEQ_FOR_EACH_I( ARG_SEQ, , arg_seq)):GameAnim(s, sf, en, r, t)
 
 }
 #endif /* GameScene_hpp */

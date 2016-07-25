@@ -32,8 +32,8 @@ namespace codechiev {
             
             ID_LinLu=9,
             ID_YuShe=10,
-            ID_YunShen=11,
-            ID_JiShen=12,
+            ID_JiShen=11,
+            ID_YunShen=12,
             
             ID_Knight=13,
             ID_Titan=14,

@@ -162,3 +162,9 @@ LoginController::exchange(int score, const CmdCallback::callback &cb)
     cmd.writer.Int(score);
 }
 
+void
+LoginController::bufuRecv(std::string key, const CmdCallback::callback & cb)
+{
+    //codechiev::BaseCmd cmd(codechiev::cmd::CmdGame, cb);
+}
+

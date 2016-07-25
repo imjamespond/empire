@@ -290,6 +290,12 @@ void
 BufuBtn::onPress(cocos2d::Ref *)
 {
     this->setEnabled(false);
+    control::LoginController::bufuRecv(this->key, CmdCallbackBegin
+                                       if(ok)
+                                       {
+                                           gNotificationLayer->onError("不服");
+                                       }
+                                       CmdCallbackEnd);
 }
 void
 RedeemBtn::onPress(cocos2d::Ref *)

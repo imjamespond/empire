@@ -18,55 +18,55 @@
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6828</integer>
+					<integer>6079</integer>
 					<key>begin</key>
-					<real>6818</real>
+					<real>6079</real>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>JiDuJiao/MeiDuSha/idle/img_%04d.png</string>
 				</dict>
 				<key>walk</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6774</integer>
+					<integer>6066</integer>
 					<key>begin</key>
-					<integer>6758</integer>
+					<integer>6055</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>JiDuJiao/MeiDuSha/side/img_%04d.png</string>
 				</dict>
 				<key>walk-face</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>3480</integer>
+					<integer>6090</integer>
 					<key>begin</key>
-					<integer>3469</integer>
+					<integer>6079</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>JiDuJiao/MeiDuSha/face/img_%04d.png</string>
 				</dict>
 				<key>walk-back</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>3468</integer>
+					<integer>6078</integer>
 					<key>begin</key>
-					<integer>3456</integer>
+					<integer>6067</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>JiDuJiao/MeiDuSha/back/img_%04d.png</string>
 				</dict>
 				<key>attack</key>
 				<dict>
 					<key>duration</key>
-					<integer>2</integer>
+					<integer>1</integer>
 					<key>end</key>
-					<integer>790</integer>
+					<integer>6093</integer>
 					<key>begin</key>
-					<integer>780</integer>
+					<integer>6091</integer>
 					<key>name</key>
-					<string>img_%03d.png</string>
+					<string>JiDuJiao/MeiDuSha/attack/img_%04d.png</string>
 				</dict>
 			</dict>
 		</dict>
@@ -84,55 +84,55 @@
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6828</integer>
+					<integer>3469</integer>
 					<key>begin</key>
-					<real>6818</real>
+					<real>3469</real>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>YanWangDian/YanWang/idle/img_%04d.png</string>
 				</dict>
 				<key>walk</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6774</integer>
+					<integer>3455</integer>
 					<key>begin</key>
-					<integer>6758</integer>
+					<integer>3440</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>YanWangDian/YanWang/side/img_%04d.png</string>
 				</dict>
 				<key>walk-face</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6786</integer>
+					<integer>3480</integer>
 					<key>begin</key>
-					<integer>6774</integer>
+					<integer>3469</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>YanWangDian/YanWang/face/img_%04d.png</string>
 				</dict>
 				<key>walk-back</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6671</integer>
+					<integer>3468</integer>
 					<key>begin</key>
-					<integer>6660</integer>
+					<integer>3456</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>YanWangDian/YanWang/back/img_%04d.png</string>
 				</dict>
 				<key>attack</key>
 				<dict>
 					<key>duration</key>
-					<integer>2</integer>
+					<integer>1</integer>
 					<key>end</key>
-					<integer>790</integer>
+					<integer>3495</integer>
 					<key>begin</key>
-					<integer>780</integer>
+					<integer>3481</integer>
 					<key>name</key>
-					<string>img_%03d.png</string>
+					<string>YanWangDian/YanWang/attack/img_%04d.png</string>
 				</dict>
 			</dict>
 		</dict>
@@ -150,55 +150,55 @@
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6828</integer>
+					<integer>4498</integer>
 					<key>begin</key>
-					<real>6818</real>
+					<real>4498</real>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>YanWangDian/WuChang/idle/img_%04d.png</string>
 				</dict>
 				<key>walk</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6774</integer>
+					<integer>4484</integer>
 					<key>begin</key>
-					<integer>6758</integer>
+					<integer>4472</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>YanWangDian/WuChang/side/img_%04d.png</string>
 				</dict>
 				<key>walk-face</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>3480</integer>
+					<integer>4510</integer>
 					<key>begin</key>
-					<integer>3469</integer>
+					<integer>4498</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>YanWangDian/WuChang/face/img_%04d.png</string>
 				</dict>
 				<key>walk-back</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>3468</integer>
+					<integer>4497</integer>
 					<key>begin</key>
-					<integer>3456</integer>
+					<integer>4485</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>YanWangDian/WuChang/back/img_%04d.png</string>
 				</dict>
 				<key>attack</key>
 				<dict>
 					<key>duration</key>
-					<integer>2</integer>
+					<integer>1</integer>
 					<key>end</key>
-					<integer>790</integer>
+					<integer>4520</integer>
 					<key>begin</key>
-					<integer>780</integer>
+					<integer>4511</integer>
 					<key>name</key>
-					<string>img_%03d.png</string>
+					<string>YanWangDian/WuChang/attack/img_%04d.png</string>
 				</dict>
 			</dict>
 		</dict>
@@ -216,55 +216,55 @@
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6828</integer>
+					<integer>4721</integer>
 					<key>begin</key>
-					<real>6818</real>
+					<real>4721</real>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>YanWangDian/MengPo/idle/img_%04d.png</string>
 				</dict>
 				<key>walk</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6774</integer>
+					<integer>4708</integer>
 					<key>begin</key>
-					<integer>6758</integer>
+					<integer>4692</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>YanWangDian/MengPo/side/img_%04d.png</string>
 				</dict>
 				<key>walk-face</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>3480</integer>
+					<integer>4732</integer>
 					<key>begin</key>
-					<integer>3469</integer>
+					<integer>4721</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>YanWangDian/MengPo/face/img_%04d.png</string>
 				</dict>
 				<key>walk-back</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>3468</integer>
+					<integer>4720</integer>
 					<key>begin</key>
-					<integer>3456</integer>
+					<integer>4709</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>YanWangDian/MengPo/back/img_%04d.png</string>
 				</dict>
 				<key>attack</key>
 				<dict>
 					<key>duration</key>
-					<integer>2</integer>
+					<integer>1</integer>
 					<key>end</key>
-					<integer>790</integer>
+					<integer>4744</integer>
 					<key>begin</key>
-					<integer>780</integer>
+					<integer>4733</integer>
 					<key>name</key>
-					<string>img_%03d.png</string>
+					<string>YanWangDian/MengPo/attack/img_%04d.png</string>
 				</dict>
 			</dict>
 		</dict>
@@ -282,55 +282,55 @@
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6828</integer>
+					<integer>4638</integer>
 					<key>begin</key>
-					<real>6818</real>
+					<real>4638</real>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>YanWangDian/NiuTou/idle/img_%04d.png</string>
 				</dict>
 				<key>walk</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6774</integer>
+					<integer>4629</integer>
 					<key>begin</key>
-					<integer>6758</integer>
+					<integer>4622</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>YanWangDian/NiuTou/side/img_%04d.png</string>
 				</dict>
 				<key>walk-face</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>3480</integer>
+					<integer>4645</integer>
 					<key>begin</key>
-					<integer>3469</integer>
+					<integer>4638</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>YanWangDian/NiuTou/face/img_%04d.png</string>
 				</dict>
 				<key>walk-back</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>3468</integer>
+					<integer>4637</integer>
 					<key>begin</key>
-					<integer>3456</integer>
+					<integer>4630</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>YanWangDian/NiuTou/back/img_%04d.png</string>
 				</dict>
 				<key>attack</key>
 				<dict>
 					<key>duration</key>
-					<integer>2</integer>
+					<integer>1</integer>
 					<key>end</key>
-					<integer>790</integer>
+					<integer>4656</integer>
 					<key>begin</key>
-					<integer>780</integer>
+					<integer>4646</integer>
 					<key>name</key>
-					<string>img_%03d.png</string>
+					<string>YanWangDian/NiuTou/attack/img_%04d.png</string>
 				</dict>
 			</dict>
 		</dict>
@@ -348,55 +348,55 @@
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6828</integer>
+					<integer>6460</integer>
 					<key>begin</key>
-					<real>6818</real>
+					<real>6460</real>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>GuAiJi/HuLangShen/idle/img_%04d.png</string>
 				</dict>
 				<key>walk</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6774</integer>
+					<integer>6490</integer>
 					<key>begin</key>
-					<integer>6758</integer>
+					<integer>6477</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>GuAiJi/HuLangShen/side/img_%04d.png</string>
 				</dict>
 				<key>walk-face</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>3480</integer>
+					<integer>6513</integer>
 					<key>begin</key>
-					<integer>3469</integer>
+					<integer>6495</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>GuAiJi/HuLangShen/face/img_%04d.png</string>
 				</dict>
 				<key>walk-back</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>3468</integer>
+					<integer>6524</integer>
 					<key>begin</key>
-					<integer>3456</integer>
+					<integer>6514</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>GuAiJi/HuLangShen/back/img_%04d.png</string>
 				</dict>
 				<key>attack</key>
 				<dict>
 					<key>duration</key>
-					<integer>2</integer>
+					<integer>1</integer>
 					<key>end</key>
-					<integer>790</integer>
+					<integer>6467</integer>
 					<key>begin</key>
-					<integer>780</integer>
+					<integer>6462</integer>
 					<key>name</key>
-					<string>img_%03d.png</string>
+					<string>GuAiJi/HuLangShen/attack/img_%04d.png</string>
 				</dict>
 			</dict>
 		</dict>
@@ -414,55 +414,55 @@
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6828</integer>
+					<integer>6423</integer>
 					<key>begin</key>
-					<real>6818</real>
+					<real>6423</real>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>GuAiJi/ShiZi/idle/img_%04d.png</string>
 				</dict>
 				<key>walk</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6774</integer>
+					<integer>6422</integer>
 					<key>begin</key>
-					<integer>6758</integer>
+					<integer>6411</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>GuAiJi/ShiZi/side/img_%04d.png</string>
 				</dict>
 				<key>walk-face</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>3480</integer>
+					<integer>6434</integer>
 					<key>begin</key>
-					<integer>3469</integer>
+					<integer>6423</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>GuAiJi/ShiZi/face/img_%04d.png</string>
 				</dict>
 				<key>walk-back</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>3468</integer>
+					<integer>6410</integer>
 					<key>begin</key>
-					<integer>3456</integer>
+					<integer>6401</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>GuAiJi/ShiZi/back/img_%04d.png</string>
 				</dict>
 				<key>attack</key>
 				<dict>
 					<key>duration</key>
-					<integer>2</integer>
+					<integer>1</integer>
 					<key>end</key>
-					<integer>790</integer>
+					<integer>6459</integer>
 					<key>begin</key>
-					<integer>780</integer>
+					<integer>6435</integer>
 					<key>name</key>
-					<string>img_%03d.png</string>
+					<string>GuAiJi/ShiZi/attack/img_%04d.png</string>
 				</dict>
 			</dict>
 		</dict>
@@ -480,55 +480,55 @@
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6828</integer>
+					<integer>6990</integer>
 					<key>begin</key>
-					<real>6818</real>
+					<real>6990</real>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>GuAiJi/FaLaoWang/idle/img_%04d.png</string>
 				</dict>
 				<key>walk</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6774</integer>
+					<integer>6977</integer>
 					<key>begin</key>
-					<integer>6758</integer>
+					<integer>6966</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>GuAiJi/FaLaoWang/side/img_%04d.png</string>
 				</dict>
 				<key>walk-face</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>3480</integer>
+					<integer>7001</integer>
 					<key>begin</key>
-					<integer>3469</integer>
+					<integer>6990</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>GuAiJi/FaLaoWang/face/img_%04d.png</string>
 				</dict>
 				<key>walk-back</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>3468</integer>
+					<integer>6989</integer>
 					<key>begin</key>
-					<integer>3456</integer>
+					<integer>6978</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>GuAiJi/FaLaoWang/back/img_%04d.png</string>
 				</dict>
 				<key>attack</key>
 				<dict>
 					<key>duration</key>
-					<integer>2</integer>
+					<integer>1</integer>
 					<key>end</key>
-					<integer>790</integer>
+					<integer>7004</integer>
 					<key>begin</key>
-					<integer>780</integer>
+					<integer>7002</integer>
 					<key>name</key>
-					<string>img_%03d.png</string>
+					<string>GuAiJi/FaLaoWang/attack/img_%04d.png</string>
 				</dict>
 			</dict>
 		</dict>
@@ -546,55 +546,55 @@
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6828</integer>
+					<integer>6316</integer>
 					<key>begin</key>
-					<real>6818</real>
+					<real>6316</real>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>GuAiJi/YanHou/idle/img_%04d.png</string>
 				</dict>
 				<key>walk</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6774</integer>
+					<integer>6315</integer>
 					<key>begin</key>
-					<integer>6758</integer>
+					<integer>6303</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>GuAiJi/YanHou/side/img_%04d.png</string>
 				</dict>
 				<key>walk-face</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>3480</integer>
+					<integer>6327</integer>
 					<key>begin</key>
-					<integer>3469</integer>
+					<integer>6316</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>GuAiJi/YanHou/face/img_%04d.png</string>
 				</dict>
 				<key>walk-back</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>3468</integer>
+					<integer>6339</integer>
 					<key>begin</key>
-					<integer>3456</integer>
+					<integer>6328</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>GuAiJi/YanHou/back/img_%04d.png</string>
 				</dict>
 				<key>attack</key>
 				<dict>
 					<key>duration</key>
-					<integer>2</integer>
+					<integer>1</integer>
 					<key>end</key>
-					<integer>790</integer>
+					<integer>6354</integer>
 					<key>begin</key>
-					<integer>780</integer>
+					<integer>6348</integer>
 					<key>name</key>
-					<string>img_%03d.png</string>
+					<string>GuAiJi/YanHou/attack/img_%04d.png</string>
 				</dict>
 			</dict>
 		</dict>
@@ -612,55 +612,55 @@
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6828</integer>
+					<integer>5465</integer>
 					<key>begin</key>
-					<real>6818</real>
+					<real>5465</real>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>MaYa/LinLuZhe/idle/img_%04d.png</string>
 				</dict>
 				<key>walk</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6774</integer>
+					<integer>5451</integer>
 					<key>begin</key>
-					<integer>6758</integer>
+					<integer>5440</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>MaYa/LinLuZhe/side/img_%04d.png</string>
 				</dict>
 				<key>walk-face</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>3480</integer>
+					<integer>5474</integer>
 					<key>begin</key>
-					<integer>3469</integer>
+					<integer>5464</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>MaYa/LinLuZhe/face/img_%04d.png</string>
 				</dict>
 				<key>walk-back</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>3468</integer>
+					<integer>5463</integer>
 					<key>begin</key>
-					<integer>3456</integer>
+					<integer>5452</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>MaYa/LinLuZhe/back/img_%04d.png</string>
 				</dict>
 				<key>attack</key>
 				<dict>
 					<key>duration</key>
-					<integer>2</integer>
+					<integer>1</integer>
 					<key>end</key>
-					<integer>790</integer>
+					<integer>5483</integer>
 					<key>begin</key>
-					<integer>780</integer>
+					<integer>5476</integer>
 					<key>name</key>
-					<string>img_%03d.png</string>
+					<string>MaYa/LinLuZhe/attack/img_%04d.png</string>
 				</dict>
 			</dict>
 		</dict>
@@ -678,55 +678,55 @@
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6828</integer>
+					<integer>5126</integer>
 					<key>begin</key>
-					<real>6818</real>
+					<real>5126</real>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>MaYa/YuSheShen/idle/img_%04d.png</string>
 				</dict>
 				<key>walk</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6774</integer>
+					<integer>5119</integer>
 					<key>begin</key>
-					<integer>6758</integer>
+					<integer>5112</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>MaYa/YuSheShen/side/img_%04d.png</string>
 				</dict>
 				<key>walk-face</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>3480</integer>
+					<integer>5129</integer>
 					<key>begin</key>
-					<integer>3469</integer>
+					<integer>5125</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>MaYa/YuSheShen/face/img_%04d.png</string>
 				</dict>
 				<key>walk-back</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>3468</integer>
+					<integer>5124</integer>
 					<key>begin</key>
-					<integer>3456</integer>
+					<integer>5120</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>MaYa/YuSheShen/back/img_%04d.png</string>
 				</dict>
 				<key>attack</key>
 				<dict>
 					<key>duration</key>
-					<integer>2</integer>
+					<integer>1</integer>
 					<key>end</key>
-					<integer>790</integer>
+					<integer>5139</integer>
 					<key>begin</key>
-					<integer>780</integer>
+					<integer>5130</integer>
 					<key>name</key>
-					<string>img_%03d.png</string>
+					<string>MaYa/YuSheShen/attack/img_%04d.png</string>
 				</dict>
 			</dict>
 		</dict>
@@ -744,55 +744,55 @@
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6828</integer>
+					<integer>5926</integer>
 					<key>begin</key>
-					<real>6818</real>
+					<real>5926</real>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>MaYa/JiShen/idle/img_%04d.png</string>
 				</dict>
 				<key>walk</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6774</integer>
+					<integer>5919</integer>
 					<key>begin</key>
-					<integer>6758</integer>
+					<integer>5913</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>MaYa/JiShen/side/img_%04d.png</string>
 				</dict>
 				<key>walk-face</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>3480</integer>
+					<integer>5929</integer>
 					<key>begin</key>
-					<integer>3469</integer>
+					<integer>5926</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>MaYa/JiShen/face/img_%04d.png</string>
 				</dict>
 				<key>walk-back</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>3468</integer>
+					<integer>5924</integer>
 					<key>begin</key>
-					<integer>3456</integer>
+					<integer>5920</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>MaYa/JiShen/back/img_%04d.png</string>
 				</dict>
 				<key>attack</key>
 				<dict>
 					<key>duration</key>
-					<integer>2</integer>
+					<integer>1</integer>
 					<key>end</key>
-					<integer>790</integer>
+					<integer>5937</integer>
 					<key>begin</key>
-					<integer>780</integer>
+					<integer>5930</integer>
 					<key>name</key>
-					<string>img_%03d.png</string>
+					<string>MaYa/JiShen/attack/img_%04d.png</string>
 				</dict>
 			</dict>
 		</dict>
@@ -810,55 +810,55 @@
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6828</integer>
+					<integer>5299</integer>
 					<key>begin</key>
-					<real>6818</real>
+					<real>5299</real>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>MaYa/YunShen/idle/img_%04d.png</string>
 				</dict>
 				<key>walk</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6774</integer>
+					<integer>5285</integer>
 					<key>begin</key>
-					<integer>6758</integer>
+					<integer>5272</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>MaYa/YunShen/side/img_%04d.png</string>
 				</dict>
 				<key>walk-face</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>3480</integer>
+					<integer>5311</integer>
 					<key>begin</key>
-					<integer>3469</integer>
+					<integer>5299</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>MaYa/YunShen/face/img_%04d.png</string>
 				</dict>
 				<key>walk-back</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>3468</integer>
+					<integer>5298</integer>
 					<key>begin</key>
-					<integer>3456</integer>
+					<integer>5286</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>MaYa/YunShen/back/img_%04d.png</string>
 				</dict>
 				<key>attack</key>
 				<dict>
 					<key>duration</key>
-					<integer>2</integer>
+					<integer>1</integer>
 					<key>end</key>
-					<integer>790</integer>
+					<integer>5322</integer>
 					<key>begin</key>
-					<integer>780</integer>
+					<integer>5312</integer>
 					<key>name</key>
-					<string>img_%03d.png</string>
+					<string>MaYa/YunShen/attack/img_%04d.png</string>
 				</dict>
 			</dict>
 		</dict>
@@ -876,55 +876,55 @@
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6828</integer>
+					<integer>6043</integer>
 					<key>begin</key>
-					<real>6818</real>
+					<real>6043</real>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>JiDuJiao/QiShi/idle/img_%04d.png</string>
 				</dict>
 				<key>walk</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6774</integer>
+					<integer>6035</integer>
 					<key>begin</key>
-					<integer>6758</integer>
+					<integer>6029</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>JiDuJiao/QiShi/side/img_%04d.png</string>
 				</dict>
 				<key>walk-face</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>3480</integer>
+					<integer>6049</integer>
 					<key>begin</key>
-					<integer>3469</integer>
+					<integer>6043</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>JiDuJiao/QiShi/face/img_%04d.png</string>
 				</dict>
 				<key>walk-back</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>3468</integer>
+					<integer>6042</integer>
 					<key>begin</key>
-					<integer>3456</integer>
+					<integer>6036</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>JiDuJiao/QiShi/back/img_%04d.png</string>
 				</dict>
 				<key>attack</key>
 				<dict>
 					<key>duration</key>
-					<integer>2</integer>
+					<integer>1</integer>
 					<key>end</key>
-					<integer>790</integer>
+					<integer>6054</integer>
 					<key>begin</key>
-					<integer>780</integer>
+					<integer>6050</integer>
 					<key>name</key>
-					<string>img_%03d.png</string>
+					<string>JiDuJiao/QiShi/attack/img_%04d.png</string>
 				</dict>
 			</dict>
 		</dict>
@@ -942,55 +942,55 @@
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6828</integer>
+					<integer>6204</integer>
 					<key>begin</key>
-					<real>6818</real>
+					<real>6204</real>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>JiDuJiao/JuRen/idle/img_%04d.png</string>
 				</dict>
 				<key>walk</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6774</integer>
+					<integer>6191</integer>
 					<key>begin</key>
-					<integer>6758</integer>
+					<integer>6180</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>JiDuJiao/JuRen/side/img_%04d.png</string>
 				</dict>
 				<key>walk-face</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>3480</integer>
+					<integer>6215</integer>
 					<key>begin</key>
-					<integer>3469</integer>
+					<integer>6204</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>JiDuJiao/JuRen/face/img_%04d.png</string>
 				</dict>
 				<key>walk-back</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>3468</integer>
+					<integer>6203</integer>
 					<key>begin</key>
-					<integer>3456</integer>
+					<integer>6192</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>JiDuJiao/JuRen/back/img_%04d.png</string>
 				</dict>
 				<key>attack</key>
 				<dict>
 					<key>duration</key>
-					<integer>2</integer>
+					<integer>1</integer>
 					<key>end</key>
-					<integer>790</integer>
+					<integer>6222</integer>
 					<key>begin</key>
-					<integer>780</integer>
+					<integer>6216</integer>
 					<key>name</key>
-					<string>img_%03d.png</string>
+					<string>JiDuJiao/JuRen/attack/img_%04d.png</string>
 				</dict>
 			</dict>
 		</dict>
@@ -1008,55 +1008,55 @@
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6828</integer>
+					<integer>5983</integer>
 					<key>begin</key>
-					<real>6818</real>
+					<real>5983</real>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>JiDuJiao/TianShi/idle/img_%04d.png</string>
 				</dict>
 				<key>walk</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>6774</integer>
+					<integer>5970</integer>
 					<key>begin</key>
-					<integer>6758</integer>
+					<integer>5959</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>JiDuJiao/TianShi/side/img_%04d.png</string>
 				</dict>
 				<key>walk-face</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>3480</integer>
+					<integer>5994</integer>
 					<key>begin</key>
-					<integer>3469</integer>
+					<integer>5983</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>JiDuJiao/TianShi/face/img_%04d.png</string>
 				</dict>
 				<key>walk-back</key>
 				<dict>
 					<key>duration</key>
 					<integer>1</integer>
 					<key>end</key>
-					<integer>3468</integer>
+					<integer>5982</integer>
 					<key>begin</key>
-					<integer>3456</integer>
+					<integer>5971</integer>
 					<key>name</key>
-					<string>img_%04d.png</string>
+					<string>JiDuJiao/TianShi/back/img_%04d.png</string>
 				</dict>
 				<key>attack</key>
 				<dict>
 					<key>duration</key>
-					<integer>2</integer>
+					<integer>1</integer>
 					<key>end</key>
-					<integer>790</integer>
+					<integer>6003</integer>
 					<key>begin</key>
-					<integer>780</integer>
+					<integer>5995</integer>
 					<key>name</key>
-					<string>img_%03d.png</string>
+					<string>JiDuJiao/TianShi/attack/img_%04d.png</string>
 				</dict>
 			</dict>
 		</dict>

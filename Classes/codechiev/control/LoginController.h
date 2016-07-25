@@ -21,6 +21,7 @@ namespace codechiev
             static void recieve(const CmdCallback::callback&);
             static void redeem(int , const CmdCallback::callback &);
             static void redeemRecv(std::string , const CmdCallback::callback &);
+            static void bufuRecv(std::string , const CmdCallback::callback &);
             static void exchange(int , const CmdCallback::callback &);
         };
 	}
