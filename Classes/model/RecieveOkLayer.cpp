@@ -33,19 +33,20 @@ RecieveOkLayer::init()
     return true;
 }
 
+#define ROT_STEP 5
+Node* n1(nullptr);
+Node* n2(nullptr);
+RecieveOkLayer* gRecieveOkLayer;
 void
 RecieveOkLayer::show(Node* parent, const rapidjson::Value& data)
 {
-    auto layer = RecieveOkLayer::create();
-    parent->addChild(layer);
+    gRecieveOkLayer = RecieveOkLayer::create();
+    parent->addChild(gRecieveOkLayer);
     
-    layer->initModal( static_cast<Layer*>(CSLoader::createNode(kRecieveOkLayer)));
-    layer->name = static_cast<ui::Text*>(layer->modalLayer->getChildByName("Text_Name")) ;
+    gRecieveOkLayer->initModal( static_cast<Layer*>(CSLoader::createNode(kRecieveOkLayer)));
+    gRecieveOkLayer->name = static_cast<ui::Text*>(gRecieveOkLayer->modalLayer->getChildByName("TX_11")) ;
     
     auto posLayer = CSLoader::createNode(kRecieveOkPosLayer);
-    CardConfig *cc = base::Singleton<CardConfig>::get();
-    AnimationConfig *ac = base::Singleton<AnimationConfig>::get();
-    
     auto listener = EventListenerTouchOneByOne::create();
     listener->setSwallowTouches(true);
     listener->onTouchBegan = std::bind([=](Touch* touch, Event* event){
@@ -55,9 +56,114 @@ RecieveOkLayer::show(Node* parent, const rapidjson::Value& data)
         auto target = static_cast<RecieveOkLayer*>(event->getCurrentTarget()) ;
         target->hide();
     }, std::placeholders::_1, std::placeholders::_2);
-    auto dispatcher = layer->getEventDispatcher();
-    dispatcher->addEventListenerWithSceneGraphPriority(listener, layer);
+    auto dispatcher = gRecieveOkLayer->getEventDispatcher();
+    dispatcher->addEventListenerWithSceneGraphPriority(listener, gRecieveOkLayer);
+   
+    if(1==data.Size())
+    {
+        n1 = gRecieveOkLayer->modalLayer->getChildByName("Node_1_1") ;
+        //n2 = gRecieveOkLayer->modalLayer->getChildByName("Node_2_2") ;
+        n1->setVisible(true);
+        //n2->setVisible(true);
+        gRecieveOkLayer->schedule([&](float dt) {
+            Vec3 v3 = n1->getRotation3D();
+            v3.y+=ROT_STEP;
+            n1->setRotation3D(v3);
+            //n2->setRotation3D(v3);
+            if(v3.y>180)
+            {
+                gRecieveOkLayer->unschedule("update_key");
+            }
+            else if(v3.y>90)
+            {
+                auto s1 = static_cast<Sprite*>(n1->getChildByName("Sprite_1_1")) ;
+                //auto s2 = static_cast<Sprite*>(n2->getChildByName("Sprite_2_2")) ;
+                s1->setVisible(false);
+                //s2->setVisible(false);
+            }
+            
+        }, "update_key");
+        
+        const rapidjson::Value &val1 = data[0];
+        const rapidjson::Value& lv1 = val1["level"];
+        const rapidjson::Value& am1 = val1["amount"];
+        const RoleStruct* role = getRole(val1["id"].GetInt());
+        const CardStruct* card = getCard(val1["id"].GetInt());
+        auto f1 = CardFrame::create();
+        f1->setRotation3D(Vec3(0,-180,0));
+        n1->addChild(f1,-1);
+        initRecievOkFrame(f1, posLayer, *card, *role);
+        
+        CardFrame* cf1 = gMenuLayer->cardLayer->getCardFrame(role->id);
+        if(cf1)
+        {
+            cf1->number = am1.GetInt();
+            cf1->level = lv1.GetInt();
+            cf1->setUpgrade();
+        }
+    }else if(2==data.Size())
+    {
+        n1 = gRecieveOkLayer->modalLayer->getChildByName("Node_2_1") ;
+        n2 = gRecieveOkLayer->modalLayer->getChildByName("Node_2_2") ;
+        n1->setVisible(true);
+        n2->setVisible(true);
+        gRecieveOkLayer->schedule([&](float dt) {
+            Vec3 v3 = n1->getRotation3D();
+            v3.y+=ROT_STEP;
+            n1->setRotation3D(v3);
+            n2->setRotation3D(v3);
+            if(v3.y>180)
+            {
+                gRecieveOkLayer->unschedule("update_key");
+            }
+            else if(v3.y>90)
+            {
+                auto s1 = static_cast<Sprite*>(n1->getChildByName("Sprite_2_1")) ;
+                auto s2 = static_cast<Sprite*>(n2->getChildByName("Sprite_2_2")) ;
+                s1->setVisible(false);
+                s2->setVisible(false);
+            }
+            
+        }, "update_key");
+        
+        const rapidjson::Value &val1 = data[0];
+        const rapidjson::Value& lv1 = val1["level"];
+        const rapidjson::Value& am1 = val1["amount"];
+        const RoleStruct* role = getRole(val1["id"].GetInt());
+        const CardStruct* card = getCard(val1["id"].GetInt());
+        auto f1 = CardFrame::create();
+        f1->setRotation3D(Vec3(0,-180,0));
+        n1->addChild(f1,-1);
+        initRecievOkFrame(f1, posLayer, *card, *role);
+        
+        const rapidjson::Value &val2 = data[1];
+        const rapidjson::Value& lv2 = val2["level"];
+        const rapidjson::Value& am2 = val2["amount"];
+        const RoleStruct* role2 = getRole(val2["id"].GetInt());
+        const CardStruct* card2 = getCard(val2["id"].GetInt());
+        auto f2 = CardFrame::create();
+        f2->setRotation3D(Vec3(0,-180,0));
+        n2->addChild(f2,-1);
+        initRecievOkFrame(f2, posLayer, *card2, *role2);
+        
+        CardFrame* cf1 = gMenuLayer->cardLayer->getCardFrame(role->id);
+        if(cf1)
+        {
+            cf1->number = am1.GetInt();
+            cf1->level = lv1.GetInt();
+            cf1->setUpgrade();
+        }
+        CardFrame* cf2 = gMenuLayer->cardLayer->getCardFrame(role2->id);
+        if(cf2)
+        {
+            cf2->number = am2.GetInt();
+            cf2->level = lv2.GetInt();
+            cf2->setUpgrade();
+        }
+
+    }
     
+    /*
     for(rapidjson::SizeType i=0; i<data.Size(); i++)
     {
         const rapidjson::Value &val = data[i];
@@ -102,8 +208,9 @@ RecieveOkLayer::show(Node* parent, const rapidjson::Value& data)
         }
     }
     
-    layer->hide();
+    layer->hide();*/
 }
+#undef ROT_STEP
 
 void
 RecieveOkLayer::hide()
@@ -122,7 +229,8 @@ RecieveOkLayer::hide()
     }
     else
     {
-        this->removeFromParent();
+        gRecieveOkLayer->removeFromParent();
+        gRecieveOkLayer=nullptr;
     }
 
 }
@@ -133,41 +241,22 @@ initRecievOkFrame(CardFrame *frame, Node *posNode, const CardStruct& card, const
     frame->id = role.id;
     frame->type = role.type;
     
-    auto cardFrame = static_cast<Sprite*>(posNode->getChildByName("card_frame"));
+    auto cardFrame = Sprite::create(StringUtils::format("img/type%dlarge.png", role.type));
     auto cardFrameMask = static_cast<Sprite*>(posNode->getChildByName("card_frame_mask"));
-    auto upgrade = static_cast<Sprite*>(posNode->getChildByName("Text_Upgrade"));
-    auto glow = static_cast<Sprite*>(posNode->getChildByName("Sprite_Glow"));
-    auto expbar = static_cast<Sprite*>(posNode->getChildByName("expbar"));
-    const Size &expbarSize = expbar->getContentSize();
+
     //card image
     frame->spriteFrame = Sprite::createWithSpriteFrameName(card.src.c_str());
     frame->spriteFrame->setScale(3);
-    frame->spriteFrame->setPosition(cardFrameMask->getPosition());
+    frame->spriteFrame->setPosition(Vec2::ZERO);
     frame->clip->addChild(frame->spriteFrame);
     //card frame mask
     auto cfmask = Sprite::createWithTexture(cardFrameMask->getTexture());
-    cfmask->setPosition(cardFrameMask->getPosition());
+    cfmask->setPosition(Vec2::ZERO);
     frame->clip->setStencil(cfmask);
     //card frame
-    frame->cardFrame = Sprite::createWithTexture(cardFrame->getTexture());
-    frame->cardFrame->setPosition(cardFrame->getPosition());
-    frame->setContentSize(frame->cardFrame->getContentSize());
+    frame->cardFrame = cardFrame;
+    frame->cardFrame->setPosition(Vec2::ZERO);
+    //frame->setContentSize(frame->cardFrame->getContentSize());
     frame->addChild(frame->cardFrame);
-    //expbar
-    frame->expbar = ui::Scale9Sprite::create();
-    frame->expbar->init(Sprite::createWithTexture(expbar->getTexture()) ,
-                        Rect(0, 0, expbarSize.width, expbarSize.height),
-                        Rect(4, 4, expbarSize.width-8, expbarSize.height-8));
-    frame->expbar->setAnchorPoint(Vec2::ZERO);
-    frame->expbar->setPosition(expbar->getPosition());
-    frame->expbarWidth = expbarSize.width;
-    frame->addChild(frame->expbar);
-    //number
-    frame->upgradeText = ui::Text::create();
-    frame->upgradeText->setPosition(upgrade->getPosition());
-    frame->addChild(frame->upgradeText);
-    //glow
-    frame->cardGlow->initWithFile(StringUtils::format("img/type%dlarge.png", role.type));
-    frame->cardGlow->setPosition(glow->getPosition());
-    frame->setAnchorPoint(Vec2::ZERO);
+
 }

@@ -32,6 +32,7 @@ public:
     float percentage;
 private:
     void onLoading();
+    void onOpen();
 };
 
 #endif /* LoadingLayer_hpp */

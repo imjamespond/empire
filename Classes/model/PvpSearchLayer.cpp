@@ -7,6 +7,7 @@
 //
 
 #include "PvpSearchLayer.hpp"
+#include "ActionSprite.h"
 #include "HallLayer.hpp"
 #include "../layer/MenuLayer.h"
 #include <cocostudio/CocoStudio.h>
@@ -27,7 +28,7 @@ PvpSearchLayer::init()
     this->initModal( static_cast<Layer*>(CSLoader::createNode(kPvpSearchLayer)));
     
     rotateNode = modalLayer->getChildByName("Node_Rotation");
-    rotateGlass = rotateNode->getChildByName("Sprite_Glass");
+    //rotateGlass = rotateNode->getChildByName("Sprite_Glass");
     
     return true;
 }
@@ -38,7 +39,7 @@ PvpSearchLayer::undoModal()
     gMenuLayer->pvpSearchLayer = nullptr;
     
     rotateNode->stopAllActions();
-    rotateGlass->stopAllActions();
+    //rotateGlass->stopAllActions();
     
     this->unschedule(SEL_SCHEDULE(&PvpSearchLayer::countdownUpdate));
     
@@ -48,15 +49,16 @@ PvpSearchLayer::undoModal()
 void
 PvpSearchLayer::doModal()
 {
-    auto rot = RotateBy::create(2, 360);
-    auto seq = RepeatForever::create(rot);
+    //auto rot_back = rot->reverse();
+    //auto rot_back_fe = RepeatForever::create(rot_back);
     
-    auto rot_back = rot->reverse();
-    auto rot_back_fe = RepeatForever::create(rot_back);
-    rotateNode->runAction(seq);
-    rotateGlass->runAction(rot_back_fe);
+    Effect * shalou= Effect::create();
+    shalou->initEffect2(gAnimShalou);
+    rotateNode->addChild(shalou);
+    //rotateGlass->runAction(rot_back_fe);
+
     
-    left=5;
+    left=20;
     countdownUpdate(0);
     this->schedule(SEL_SCHEDULE(&PvpSearchLayer::countdownUpdate), 1);
     

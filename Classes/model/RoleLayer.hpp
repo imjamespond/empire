@@ -55,7 +55,7 @@ namespace codechiev {
         int id;
         
         RoleSprite *role;
-        Effect* aura;
+        //Effect* aura;
     private:
     };
     //typedef boost::shared_ptr<Role> role_ptr;

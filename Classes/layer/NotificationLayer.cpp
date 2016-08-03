@@ -61,11 +61,11 @@ NotificationLayer::update(float delta)
 {
 	Layer::update(delta);
 
-    BaseDebug* d = base::Singleton<BaseDebug>::get();
+    /*BaseDebug* d = base::Singleton<BaseDebug>::get();
 	if (d->dirty)
 	{
 		debug->setString(d->toString());
-	}
+	}*/
     
     pingInterval+=delta;
     if(pingExpired&&pingInterval>15)

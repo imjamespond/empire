@@ -32,8 +32,8 @@ namespace codechiev
         struct AnimationStruct back;
     };
     
-    static struct AnimationStruct gAnimExplode("explosion/img_%4d.png", 7132, 7147, 1);
-    static struct AnimationStruct gAnimAura("aura/img_%4d.png", 1095, 1110, 1);
+    extern struct AnimationStruct gAnimShalou;
+    //static struct AnimationStruct gAnimAura("aura/img_%4d.png", 1095, 1110, 1);
     
     class AnimationConfig
     {

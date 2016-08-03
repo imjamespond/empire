@@ -24,10 +24,10 @@ using namespace codechiev;
 void
 YanWangAnim::play()
 {
-    Effect *explosion = Effect::create();
+    /*Effect *explosion = Effect::create();
     explosion->setPosition(target->getPosition());
     explosion->initEffect(gAnimExplode, 1, false);
-    scene->addChild(explosion);
+    scene->addChild(explosion);*/
     
     role->role->stopAllActions();
     role->role->runAction(Sequence::create(role->role->attackAction,

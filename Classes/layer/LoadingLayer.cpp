@@ -26,20 +26,18 @@
 USING_NS_CC;
 using namespace codechiev;
 
-void onOpen()
+void
+LoadingLayer::onOpen()
 {
     LoginLayer::showLogin();
-    //======registEvent======
-    codechiev::base::Singleton<CmdCallback>::get()->registEvent("event.game", std::bind( &MenuLayer::gameEvent, gMenuLayer, std::placeholders::_1));
-    //======registEvent======
-    codechiev::base::Singleton<CmdCallback>::get()->registEvent("event.game.end", std::bind( &MenuLayer::gameEndEvent, gMenuLayer, std::placeholders::_1));
-    //======registEvent======
-    codechiev::base::Singleton<CmdCallback>::get()->registEvent("event.update", std::bind( &MenuLayer::updateEvent, gMenuLayer, std::placeholders::_1));
-    //======registEvent======
-    codechiev::base::Singleton<CmdCallback>::get()->registEvent("event.game.expired", std::bind( &GameMenuLayer::expiredEvent, gGameLayer->gameMenu, std::placeholders::_1));
-    //======registEvent======
-    base::Singleton<CmdCallback>::get()->registEvent("event.game.combat", std::bind( &GameSceneLayer::combatEvent, gGameLayer->gameScene, std::placeholders::_1));
+
     //MessageBox("Congrats on completing the game!", "Victory");
+    
+    if(gLoadingLayer)
+    {
+        gLoadingLayer->removeFromParent();
+        gLoadingLayer=nullptr;
+    }
 }
 
 LoadingLayer *gLoadingLayer(nullptr);
@@ -93,6 +91,11 @@ LoadingLayer::update(float dt)
             gGameLayer->setPosition(gOrigin);
             gGameLayer->setVisible(false);
             gScene->addChild(gGameLayer,1);
+            
+            //======registEvent======
+            codechiev::base::Singleton<CmdCallback>::get()->registEvent("event.game.expired", std::bind( &GameMenuLayer::expiredEvent, gGameLayer->gameMenu, std::placeholders::_1));
+            //======registEvent======
+            base::Singleton<CmdCallback>::get()->registEvent("event.game.combat", std::bind( &GameSceneLayer::combatEvent, gGameLayer->gameScene, std::placeholders::_1));
         }
         if(!gMenuLayer)
         {
@@ -100,19 +103,26 @@ LoadingLayer::update(float dt)
             gMenuLayer->setPosition(gOrigin);
             gMenuLayer->setVisible(false);
             gScene->addChild(gMenuLayer,2);
+            
+            //======registEvent======
+            codechiev::base::Singleton<CmdCallback>::get()->registEvent("event.game", std::bind( &MenuLayer::gameEvent, gMenuLayer, std::placeholders::_1));
+            //======registEvent======
+            codechiev::base::Singleton<CmdCallback>::get()->registEvent("event.game.end", std::bind( &MenuLayer::gameEndEvent, gMenuLayer, std::placeholders::_1));
+            //======registEvent======
+            codechiev::base::Singleton<CmdCallback>::get()->registEvent("event.update", std::bind( &MenuLayer::updateEvent, gMenuLayer, std::placeholders::_1));
         }
+
     }
     else if(percentage>70&&initData&4)
     {
         initData^=4;
         
         //connect
-        base::Singleton<Network>::get()->connect(std::bind(&onOpen));
+        base::Singleton<Network>::get()->connect(std::bind(&LoadingLayer::onOpen, this));
     }
     else if(percentage>100)
     {
         this->unscheduleUpdate();
-        this->removeFromParent();
     }
     
 }

@@ -67,10 +67,10 @@ Game::Player::checkPetrify()
 void
 Game::Player::setSelfAura()
 {
-    for(int i=0; i<(sizeof roles)/sizeof(Role*); i++)
+    /*for(int i=0; i<(sizeof roles)/sizeof(Role*); i++)
     {
         roles[i]->aura->setColor(cocos2d::Color3B::RED);
-    }
+    }*/
 }
 
 void

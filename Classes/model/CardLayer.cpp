@@ -20,18 +20,46 @@
 #include <cocostudio/CocoStudio.h>
 #include <set>
 
+
+
+namespace codechiev
+{
+    std::string getRoleName(int roleid)
+    {
+        AnimationConfig *ac = base::Singleton<AnimationConfig>::get();
+        AnimationConfig::role_struct_map::const_iterator roleIt = ac->roleStructMap.find(roleid);
+        if(roleIt!=ac->roleStructMap.end())
+        {
+            return roleIt->second.name;
+        }
+        return "";
+    }
+    const struct RoleStruct* getRole(int roleid)
+    {
+        AnimationConfig *ac = base::Singleton<AnimationConfig>::get();
+        AnimationConfig::role_struct_map::const_iterator roleIt = ac->roleStructMap.find(roleid);
+        if(roleIt!=ac->roleStructMap.end())
+        {
+            return &roleIt->second;
+        }
+        return nullptr;
+    }
+    
+    const struct CardStruct* getCard(int id)
+    {
+        CardConfig *cc = base::Singleton<CardConfig>::get();
+        CardConfig::card_struct_map::const_iterator it = cc->cardMap.find(id);
+        //card icon data
+        if(it!=cc->cardMap.end())
+        {
+            return &it->second;
+        }
+        return nullptr;
+    }
+}
+
 USING_NS_CC;
 using namespace codechiev;
-std::string getRoleName(int roleid)
-{
-    AnimationConfig *ac = base::Singleton<AnimationConfig>::get();
-    AnimationConfig::role_struct_map::const_iterator roleIt = ac->roleStructMap.find(roleid);
-    if(roleIt!=ac->roleStructMap.end())
-    {
-        return roleIt->second.name;
-    }
-    return "";
-}
 
 void
 initRoleFrame(CardFrame *frame, Node *cardUnitLayer, const CardStruct& card, const RoleStruct& role)
@@ -133,7 +161,7 @@ CardFrame::setUpgrade()
             if(level)
                 spriteFrame->setColor(Color3B::WHITE);
             else
-                spriteFrame->setColor(Color3B(0x33,0x33,0x33));
+                //spriteFrame->setColor(Color3B(0x33,0x33,0x33));
             
             break;
         }

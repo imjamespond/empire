@@ -10,6 +10,7 @@
 #define PvpSearchLayer_hpp
 
 #include "ModalLayer.hpp"
+#include "Effect.hpp"
 #include <cocos2d.h>
 #include <ui/CocosGUI.h>
 
@@ -30,7 +31,7 @@ namespace codechiev
         void countdownUpdate(float dt);
         
         cocos2d::Node* rotateNode;
-        cocos2d::Node* rotateGlass;
+        //cocos2d::Node* rotateGlass;
         
         float left;
     };

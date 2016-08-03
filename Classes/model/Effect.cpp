@@ -32,5 +32,13 @@ Effect::initEffect(const struct AnimationStruct& anim, float delay, bool repeat)
                                          Animate::create(spriteAnim), cb, nullptr);
         this->runAction(sequence);
     }
-
+}
+void
+Effect::initEffect2(const struct AnimationStruct& anim)
+{
+    auto spriteAnim = Animation::createWithSpriteFrames(getAnimation(anim), anim.duration / (anim.end-anim.begin));
+    auto cb = CallFunc::create(std::bind([=](Sprite* s){
+        s->setRotation(0.0f);
+    }, this) );
+    this->runAction(RepeatForever::create(Sequence::create(Animate::create(spriteAnim), RotateBy::create(.3, 180), cb, nullptr)));
 }

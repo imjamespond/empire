@@ -17,15 +17,19 @@
 
 static const char kCardDescLayer[] = "ui/CardDescLayer.csb";
 static const char kCardDescPosLayer[] = "ui/CardDescPosLayer.csb";
-extern std::string getRoleName(int roleid);
+
 namespace codechiev
 {
+    extern std::string getRoleName(int roleid);
+    extern const struct RoleStruct* getRole(int roleid);
+    
     struct CardStruct
     {
         CardStruct():id(0){}
         int id;
         std::string src;
     };
+    extern const CardStruct* getCard(int roleid);
     
     class CardConfig
     {

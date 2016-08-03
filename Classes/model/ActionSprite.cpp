@@ -41,6 +41,10 @@ codechiev::getAction(const struct AnimationStruct& anim)
     return action;
 }
 
+namespace codechiev {
+    struct AnimationStruct gAnimShalou;
+}
+
 void
 AnimationConfig::init()
 {
@@ -99,4 +103,10 @@ AnimationConfig::init()
         roleStruct.back.duration = back["duration"].asFloat();
     }
     //init effect
+    ValueVector& effect = valMap["effect"].asValueVector();
+    ValueMap& shalou = effect[0].asValueMap();
+    gAnimShalou.name = shalou["name"].asString();
+    gAnimShalou.begin = shalou["begin"].asInt();
+    gAnimShalou.end = shalou["end"].asInt();
+    gAnimShalou.duration = shalou["duration"].asInt();
 }

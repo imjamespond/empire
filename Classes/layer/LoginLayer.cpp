@@ -22,18 +22,7 @@ void
 LoginLayer::onEnter()
 {
 	Layer::onEnter();
-    
-    //auto login
-    std::string username = base::Singleton<BasisUtil>::get()->getAppString(AK_UNAME);
-    std::string passwd = base::Singleton<BasisUtil>::get()->getAppString(AK_PASSWD);
-    std::string deviceId = base::Singleton<BasisUtil>::get()->getAppString(AK_DEVICE);
-    if(username.size()&&passwd.size())
-    {
-        loginBtn_->setEnabled(false);
-        gNotificationLayer->loading();
-        
-        control::LoginController::login(username, passwd, deviceId, std::bind(&LoginLayer::loginOk, this, std::placeholders::_1, std::placeholders::_2));
-    }
+
 }
 
 bool
@@ -45,18 +34,7 @@ LoginLayer::init()
 	{
 		return false;
 	}
-    loginNode_ = CSLoader::createNode(kLoginLayer);
-    loginNode_->setPosition(gCenter);
-    
-    loginBtn_ = static_cast<ui::Button*>(loginNode_->getChildByName("BTN_LOGIN"));
-    loginBtn_->addClickEventListener(CC_CALLBACK_1(LoginLayer::loginBtnClick, this));
 
-    name_ = static_cast<ui::TextField*>(loginNode_->getChildByName("Node_Name")->getChildByName("TF_Name"));
-    name_->setTextVerticalAlignment(TextVAlignment::CENTER);
-    passwd_ = static_cast<ui::TextField*>(loginNode_->getChildByName("Node_Passwd")->getChildByName("TF_Passwd"));
-    passwd_->setTextVerticalAlignment(TextVAlignment::CENTER);
-    
-    this->addChild(loginNode_);
 	return true;
 }
 
@@ -69,35 +47,67 @@ LoginLayer::showLogin( bool needPwd)
     
     if(needPwd)
     {
-        Node* editNode = loginLayer->getLoginNode()->getChildByName("Node_Passwd");
-        editNode->setVisible(true);
+        auto layer = static_cast<Layer*>(CSLoader::createNode(kLoginLayer)) ;
+        layer->setPosition(gCenter);
+        loginLayer->layer = layer;
+        loginLayer->addChild(layer);
+        
+        layer->getChildByName("Node_Passwd")->setVisible(true);
+    }else
+    {
+        auto layer = static_cast<Layer*>(CSLoader::createNode(kSignupLayer)) ;
+        layer->setPosition(gCenter);
+        loginLayer->layer = layer;
+        loginLayer->addChild(layer);
+    }
+    
+    
+    loginLayer->loginBtn = static_cast<ui::Button*>(loginLayer->layer->getChildByName("BTN_LOGIN"));
+    loginLayer->loginBtn->addClickEventListener(CC_CALLBACK_1(LoginLayer::loginBtnClick, loginLayer));
+    
+    loginLayer->name = static_cast<ui::TextField*>(loginLayer->layer->getChildByName("Node_Name")->getChildByName("TF_Name"));
+    loginLayer->name->setTextVerticalAlignment(TextVAlignment::CENTER);
+    loginLayer->passwd = static_cast<ui::TextField*>(loginLayer->layer->getChildByName("Node_Passwd")->getChildByName("TF_Passwd"));
+    loginLayer->passwd->setTextVerticalAlignment(TextVAlignment::CENTER);
+    
+    
+    //auto login
+    std::string username = base::Singleton<BasisUtil>::get()->getAppString(AK_UNAME);
+    std::string passwd = base::Singleton<BasisUtil>::get()->getAppString(AK_PASSWD);
+    std::string deviceId = base::Singleton<BasisUtil>::get()->getAppString(AK_DEVICE);
+    if(username.size()&&passwd.size())
+    {
+        loginLayer->loginBtn->setEnabled(false);
+        gNotificationLayer->loading();
+        
+        control::LoginController::login(username, passwd, deviceId, std::bind(&LoginLayer::loginOk, loginLayer, std::placeholders::_1, std::placeholders::_2));
     }
 }
 
 void
 LoginLayer::loginBtnClick(Ref*)
 {
-    loginBtn_->setEnabled(false);
+    loginBtn->setEnabled(false);
     gNotificationLayer->loading();
     
-    std::string username = name_->getString();
-    std::string passwd = passwd_->getString();
+    std::string username = name->getString();
+    std::string pwd = passwd->getString();
     //login
-    if(username.size()&&passwd.size())
+    if(username.size()&&pwd.size())
     {
         base::Singleton<BasisUtil>::get()->setAppString(AK_UNAME, username);
-        base::Singleton<BasisUtil>::get()->setAppString(AK_PASSWD, passwd);
+        base::Singleton<BasisUtil>::get()->setAppString(AK_PASSWD, pwd);
         std::string deviceId;
-        control::LoginController::login(username, passwd, deviceId, std::bind(&LoginLayer::loginOk, this, std::placeholders::_1, std::placeholders::_2));
+        control::LoginController::login(username, pwd, deviceId, std::bind(&LoginLayer::loginOk, this, std::placeholders::_1, std::placeholders::_2));
     }
     //create without passwd input
-    else if(username.size()&&passwd.size()==0)
+    else if(username.size()&&pwd.size()==0)
     {
-        passwd = randomPasswd(6);
+        pwd = randomPasswd(6);
         base::Singleton<BasisUtil>::get()->setAppString(AK_UNAME, username);
-        base::Singleton<BasisUtil>::get()->setAppString(AK_PASSWD, passwd);
+        base::Singleton<BasisUtil>::get()->setAppString(AK_PASSWD, pwd);
         
-        control::LoginController::create(username, passwd, std::bind(&LoginLayer::createOk, this, std::placeholders::_1, std::placeholders::_2));
+        control::LoginController::create(username, pwd, std::bind(&LoginLayer::createOk, this, std::placeholders::_1, std::placeholders::_2));
     }
 
 }
@@ -114,7 +124,7 @@ LoginLayer::loginOk(rapidjson::Document& doc, bool ok)
     gNotificationLayer->quitLoading();
     if(!ok)
     {
-        loginBtn_->setEnabled(true);
+        loginBtn->setEnabled(true);
         return;
     }
     

@@ -14,8 +14,7 @@
 USING_NS_CC;
 using namespace codechiev;
 
-Role::Role():role(nullptr),
-aura(nullptr){}
+Role::Role():role(nullptr){}
 Role::~Role()
 {
     log("~Role");
@@ -24,11 +23,12 @@ Role::~Role()
 bool
 Role::initRole()
 {
+    /*
     aura = Effect::create();
     aura->initEffect(gAnimAura, 0);
     aura->setPosition(Vec2::ZERO);
     aura->setScale(5.0f);
-    this->addChild(aura);
+    this->addChild(aura);*/
     
     AnimationConfig *ac = base::Singleton<AnimationConfig>::get();
     assert(ac->roleStructMap.find(id)!=ac->roleStructMap.end());
@@ -44,7 +44,7 @@ Role::initRole()
     role->idle();
     this->addChild(role);
 
-    this->addChild(Label::createWithSystemFont(name, "arial", 20));
+    this->addChild(Label::createWithSystemFont(name, "", 20));
     
     return true;
 }

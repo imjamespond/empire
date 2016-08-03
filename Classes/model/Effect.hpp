@@ -20,7 +20,7 @@ namespace codechiev
         CREATE_FUNC(Effect);
         
         void initEffect(const struct AnimationStruct&, float delay=0.0f, bool repeat=true);
-        
+        void initEffect2(const struct AnimationStruct&);
     private:
     };
     

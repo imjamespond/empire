@@ -58,7 +58,7 @@ static const char kRankPosLayer[] = "ui/RankPosLayer.csb";
 static const char kBattleMenu[] = "ui/BattleMenu.csb";
 static const char kBattleLayer[] = "ui/BattleLayer.csb";
 static const char kLoadingLayer[] = "ui/LoadingLayer.csb";
-static const char kLoginLayer[] = "ui/LoginLayer.csb";
+
 static const char kMenuLayer[] = "ui/MenuLayer.csb";
 static const char kConfigLayer[] = "ui/ConfigLayer.csb";
 static const char kHallLayer[] = "ui/HallLayer.csb";
