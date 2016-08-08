@@ -155,6 +155,14 @@ LoginLayer::loginOk(rapidjson::Document& doc, bool ok)
         if(!score.IsNull())
             self->score = score.GetInt();
         
+        const rapidjson::Value& redeem = data["redeem"];
+        if(!redeem.IsNull())
+            self->redeem = redeem.GetInt();
+        
+        const rapidjson::Value& recieve = data["recieve"];
+        if(!recieve.IsNull())
+            self->recieve = recieve.GetInt();
+        
         EventCustom userEvent(kUserEvent);
         userEvent.setUserData(nullptr);
         Director::getInstance()->getEventDispatcher()->dispatchEvent(&userEvent);

@@ -51,6 +51,7 @@ HallLayer::init()
     txName = static_cast<ui::Text*>(hallLayer->getChildByName("TX_Name"));
     txLevel = static_cast<ui::Text*>(hallLayer->getChildByName("TX_Level"));
     txScore = static_cast<ui::Text*>(hallLayer->getChildByName("TX_Score"));
+    txRevieve = static_cast<ui::Text*>(hallLayer->getChildByName("TX_Recieve"));
     
     btnBegin = static_cast<ui::Button*>(hallLayer->getChildByName("BTN_Begin"));
     btnBegin->addClickEventListener(CC_CALLBACK_1( HallLayer::gameAlloc, this));
@@ -68,7 +69,6 @@ HallLayer::init()
     
     auto btnRecv = static_cast<ui::Button*>(hallLayer->getChildByName("BTN_Recv"));
     btnRecv->addClickEventListener(std::bind(&HallLayer::onRecieve, this, std::placeholders::_1));
-    
     auto btnRank = static_cast<ui::Button*>(hallLayer->getChildByName("BTN_Rank"));
     btnRank->addClickEventListener(std::bind(&HallLayer::onRanklist, this, std::placeholders::_1));
     auto btnIntro = static_cast<ui::Button*>(hallLayer->getChildByName("BTN_Intro"));
@@ -100,6 +100,8 @@ HallLayer::init()
     });
     
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(listener, 1);
+    
+    this->schedule(SEL_SCHEDULE(&HallLayer::updateRecieve), 1);
     
     return true;
 }
@@ -164,11 +166,17 @@ HallLayer::onRanklist(Ref* ref)
 void
 HallLayer::onRecieve(cocos2d::Ref *)
 {
+    User *self = base::Singleton<User>::get();
+    if(--self->recieve>0)
+        return;
+    
     control::LoginController::recieve(CmdCallbackBeginWithData
       if(ok)
       {
           gNotificationLayer->onError("领取成功");
           RecieveOkLayer::show(gMenuLayer, data);
+          auto self = base::Singleton<User>::get();
+          self->recieve = 3600;
       }
               CmdCallbackEnd);
 }
@@ -210,6 +218,13 @@ HallLayer::updateScore(int score)
     User *self = base::Singleton<User>::get();
     self->score = score;
     txScore->setString(StringUtils::format("%d",score));
+}
+void
+HallLayer::updateRecieve()
+{
+    User *self = base::Singleton<User>::get();
+    if(--self->recieve>0)
+        txRevieve->setString(StringUtils::format("%02d:%02d",self->recieve/60,self->recieve%60));
 }
 
 bool

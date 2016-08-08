@@ -15,11 +15,13 @@ namespace codechiev
     
     struct User
     {
-        User():uid(0),level(0),score(0){}
+        User():uid(0),level(0),score(0),redeem(0),recieve(0){}
         int64_t uid;
         std::string name;
         int level;
         int score;
+        int redeem;
+        int recieve;
     };
 }
 

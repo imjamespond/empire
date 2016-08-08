@@ -80,6 +80,11 @@ GameMenuLayer::initGameMenu()
     player0->txPlayer->setString(game->player0.name) ;
     player1->txPlayer->setString(game->player1.name) ;
     
+    if(player0->uid<0)
+        player0->txTimer->setVisible(false);
+    if(player1->uid<0)
+        player1->txTimer->setVisible(false);
+    
     updateHealth(game->player0, game->player0.hp, game->player0.maxHp);
     updateHealth(game->player1, game->player1.hp, game->player1.maxHp);
 

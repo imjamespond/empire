@@ -44,6 +44,7 @@ Game::Player::resetBuff()
 {
     petrify=0;
     prolong=0;
+    flipX=false;
 }
 bool
 Game::Player::checkPetrify()
@@ -54,12 +55,33 @@ Game::Player::checkPetrify()
         {
             roles[i]->setPetrify(true);
         }
+        petrify--;
         return true;
     }else
     {
         for(int i=0; i<(sizeof roles)/sizeof(Role*); i++)
         {
             roles[i]->setPetrify(false);
+        }
+    }
+    return false;
+}
+bool
+Game::Player::checkFlipX()
+{
+    if(flipX)
+    {
+        for(int i=0; i<(sizeof roles)/sizeof(Role*); i++)
+        {
+            roles[i]->role->setRotation(180);
+        }
+        flipX=false;
+        return true;
+    }else
+    {
+        for(int i=0; i<(sizeof roles)/sizeof(Role*); i++)
+        {
+            roles[i]->role->setRotation(0);
         }
     }
     return false;

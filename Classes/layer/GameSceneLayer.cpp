@@ -21,6 +21,8 @@ USING_NS_CC;
 using namespace codechiev;
 using namespace rapidjson;
 
+#define ROUND_COUNT 10
+
 GameSceneLayer::GameSceneLayer() :
 battleLayer_(nullptr),
 sendingSwap_(false),
@@ -135,9 +137,14 @@ GameSceneLayer::startTimer()
     game->player0.checkPetrify();
     game->player1.checkPetrify();
     
+    game->player0.checkFlipX();
+    game->player1.checkFlipX();
+    
     if(Game::STATE_BEGIN & game->state)
     {
-        gGameLayer->gameMenu->timerBegin(12);
+        gGameLayer->gameMenu->timerBegin(ROUND_COUNT+self->prolong-self->shorten);
+        self->prolong=0;
+        self->shorten=0;
     }
 }
 

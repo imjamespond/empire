@@ -33,7 +33,8 @@ namespace codechiev
         {
             Player():
             uid(0),hp(0),maxHp(0),defense(0),level(0),type(0),
-            petrify(0),prolong(0.0f),shorten(0.0f), opertime(0.0f)
+            petrify(0),prolong(0.0f),shorten(0.0f), flipX(false),
+            opertime(0.0f)
             {
                 ::memset(swap, 0, sizeof swap);
                 ::memset(roles, 0, sizeof roles);
@@ -42,6 +43,7 @@ namespace codechiev
             void reset();
             void resetBuff();
             bool checkPetrify();
+            bool checkFlipX();
             void setSelfAura();
             
             int64_t uid;
@@ -55,6 +57,7 @@ namespace codechiev
             int petrify;
             float prolong;
             float shorten;
+            bool flipX;
             //time
             float opertime;
             //ui

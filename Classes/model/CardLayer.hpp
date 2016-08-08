@@ -68,6 +68,7 @@ namespace codechiev
         cocos2d::Sprite *cardFrame;
         cocos2d::Sprite *cardGlow;
         cocos2d::Sprite *spriteFrame;
+        cocos2d::Sprite *spriteType;
         cocos2d::ui::Text *upgradeText;
         cocos2d::ui::Text *levelText;
         cocos2d::EventListener* listener;

@@ -16,7 +16,7 @@ using namespace cocos2d;
 using namespace codechiev;
 
 PvpSearchLayer::PvpSearchLayer(){}
-
+#define SEARCH_COUNT 5
 bool
 PvpSearchLayer::init()
 {
@@ -58,7 +58,7 @@ PvpSearchLayer::doModal()
     //rotateGlass->runAction(rot_back_fe);
 
     
-    left=20;
+    left=SEARCH_COUNT;
     countdownUpdate(0);
     this->schedule(SEL_SCHEDULE(&PvpSearchLayer::countdownUpdate), 1);
     

@@ -78,7 +78,7 @@ initRoleFrame(CardFrame *frame, Node *cardUnitLayer, const CardStruct& card, con
     
     //card image
     frame->spriteFrame = Sprite::createWithSpriteFrameName(card.src.c_str());
-    frame->spriteFrame->setScale(3);
+    //frame->spriteFrame->setScale(3);
     frame->spriteFrame->setPosition(cardFrameMask->getPosition());
     frame->clip->addChild(frame->spriteFrame);
     //card frame mask
@@ -113,11 +113,16 @@ initRoleFrame(CardFrame *frame, Node *cardUnitLayer, const CardStruct& card, con
     frame->cardGlow->initWithFile(StringUtils::format("img/type%d.png", role.type));
     frame->cardGlow->setPosition(glow->getPosition());
     frame->setAnchorPoint(Vec2::ZERO);
+    //type icon
+    frame->spriteType = Sprite::create(StringUtils::format("img/typeicon%d.png", role.type));
+    frame->spriteType->setPosition(cardFrame->getPosition());
+    frame->addChild(frame->spriteType);
 }
 
 CardLayer::CardLayer(){::memset(cardsel, 0, sizeof cardsel);}
 CardFrame::CardFrame():id(0),type(0),number(0),upgrade(0),level(0),attack(0),hp(0)
-,expbarWidth(0.0f),levelText(nullptr),upgradeText(nullptr),expbar(nullptr),listener(nullptr){}
+,expbarWidth(0.0f),levelText(nullptr),upgradeText(nullptr),expbar(nullptr),listener(nullptr),
+spriteFrame(nullptr),spriteType(nullptr){}
 CardUnit::CardUnit(){}
 
 bool
@@ -159,10 +164,27 @@ CardFrame::setUpgrade()
                 expbar->setPreferredSize(Size(expbarWidth*propotion,
                                           expbar->getContentSize().height));
             if(level)
-                spriteFrame->setColor(Color3B::WHITE);
-            else
-                //spriteFrame->setColor(Color3B(0x33,0x33,0x33));
-            
+            {    if(spriteType)
+                    spriteType->setVisible(false);
+                clip->setVisible(true);
+                if(cardGlow)
+                    cardGlow->setVisible(true);
+                if(cardFrame)
+                    cardFrame->setVisible(true);
+                if(upgradeText)
+                    upgradeText->setVisible(true);
+            }else
+            {   //spriteFrame->setColor(Color3B(0x33,0x33,0x33));
+                if(spriteType)
+                    spriteType->setVisible(true);
+                clip->setVisible(false);
+                if(cardGlow)
+                    cardGlow->setVisible(false);
+                if(cardFrame)
+                    cardFrame->setVisible(false);
+                if(upgradeText)
+                    upgradeText->setVisible(false);
+            }
             break;
         }
     }
@@ -269,6 +291,11 @@ CardDescLayer::show( CardFrame* f)
 
     auto txName = static_cast<ui::Text*>( cardDescLayer->modalLayer->getChildByName("Text_Name"));
     txName->setString(getRoleName(f->id));
+    
+    const RoleStruct* role = getRole(f->id);
+    auto txDesc = static_cast<ui::Text*>( cardDescLayer->modalLayer->getChildByName("Text_Desc"));
+    if(role)
+    txDesc->setString(role->description);
     
     auto txAttack = static_cast<ui::Text*>( cardDescLayer->modalLayer->getChildByName("Text_Attack"));
     txAttack->setString(StringUtils::format("%d", f->attack));

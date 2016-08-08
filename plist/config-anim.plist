@@ -1067,13 +1067,13 @@
 			<key>id</key>
 			<integer>2</integer>
 			<key>name</key>
-			<string>&quot;explosion/%d.png&quot;</string>
+			<string>shalou/%d.png</string>
 			<key>begin</key>
-			<integer>763</integer>
-			<key>end</key>
-			<integer>779</integer>
-			<key>duration</key>
 			<integer>1</integer>
+			<key>end</key>
+			<integer>9</integer>
+			<key>duration</key>
+			<integer>2</integer>
 		</dict>
 	</array>
 </dict>

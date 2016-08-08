@@ -66,6 +66,10 @@ AnimationConfig::init()
         assert(!name.isNull());
         roleStruct.name =name.asString();
         
+        Value& desc = role["desc"];
+        if(!desc.isNull())
+        roleStruct.description =desc.asString();
+        
         Value& type = role["type"];
         assert(!type.isNull());
         roleStruct.type = type.asInt();

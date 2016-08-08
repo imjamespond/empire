@@ -10,6 +10,7 @@
 #include "CardLayer.hpp"
 #include "ActionSprite.h"
 #include "ConfirmLayer.hpp"
+#include "User.h"
 #include "../layer/MenuLayer.h"
 #include "../codechiev/BasisUtil.h"
 #include "../codechiev/control/LoginController.h"
@@ -31,6 +32,10 @@ RedeemLayer::init()
     }
     
     this->initModal( static_cast<Layer*>(CSLoader::createNode(kRedeemLayer)));
+    auto redeem = static_cast<ui::Text *>(this->modalLayer->getChildByName("Text_Redeem"));
+    
+    User *self = base::Singleton<User>::get();
+    redeem->setString(StringUtils::format("%d",self->redeem));
     
     //init every card
     int i(0);
@@ -87,6 +92,7 @@ RedeemLayer::updateFrame(codechiev::CardFrame *cf)
     {
         CardFrame* f = it->second;
         f->operator=(cf);
+        f->upgradeText->setString(StringUtils::format("%d", f->number));
     }
     
 }
@@ -101,7 +107,6 @@ RedeemLayer::touchbegin(Touch* touch, Event* event)
     //check is selected
     if (rect.containsPoint(locationInNode))
     {
-        
         auto confirmLayer = ConfirmLayer::create();
         confirmLayer->setVisible(false);
         gMenuLayer->addChild(confirmLayer,999);
@@ -184,9 +189,15 @@ initRedeemFrame(CardFrame *frame, Node *posNode, const CardStruct& card, const R
     //number
     frame->upgradeText = ui::Text::create();
     frame->upgradeText->setPosition(number->getPosition());
+    frame->upgradeText->setTextColor(Color4B(0xff,0xff,0xff,255));
+    frame->upgradeText->setFontSize(20);
     frame->addChild(frame->upgradeText);
     //glow
     frame->cardGlow->initWithFile(StringUtils::format("img/type%d.png", role.type));
     frame->cardGlow->setPosition(glow->getPosition());
     frame->setAnchorPoint(Vec2::ZERO);
+    //type icon
+    frame->spriteType = Sprite::create("img/redeem_type.png");
+    frame->spriteType->setPosition(cardFrame->getPosition());
+    frame->addChild(frame->spriteType);
 }

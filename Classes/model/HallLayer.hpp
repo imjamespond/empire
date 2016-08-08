@@ -31,6 +31,7 @@ namespace codechiev
         void gameAlloc(cocos2d::Ref* );
         void updateScore(int score);
         void updateLevel(int level);
+        void updateRecieve();
         void gamePveAlloc();
         void stopCountDown();
         void onRanklist(cocos2d::Ref*);
@@ -41,6 +42,7 @@ namespace codechiev
         cocos2d::ui::Text *txName;
         cocos2d::ui::Text *txScore;
         cocos2d::ui::Text *txLevel;
+        cocos2d::ui::Text *txRevieve;
         cocos2d::ui::Button *btnBegin;
         cocos2d::ui::Button *btnConfig;
         cocos2d::ui::PageView *pageViewMap;
