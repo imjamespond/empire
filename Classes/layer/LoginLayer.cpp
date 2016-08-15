@@ -59,8 +59,31 @@ LoginLayer::showLogin( bool needPwd)
         layer->setPosition(gCenter);
         loginLayer->layer = layer;
         loginLayer->addChild(layer);
+        
+        auto loginBtn = static_cast<ui::Button*>(loginLayer->layer->getChildByName("BTN_LOGIN"));
+        auto ck = static_cast<ui::CheckBox*>(loginLayer->layer->getChildByName("CheckBox_1"));
+        ck->addEventListener(std::bind([=](Ref* pSender, ui::CheckBox::EventType type){
+            switch (type)
+            {
+                case ui::CheckBox::EventType::SELECTED:
+                    loginBtn->setEnabled(true);
+                    break;
+                case ui::CheckBox::EventType::UNSELECTED:
+                    loginBtn->setEnabled(false);
+                    break;
+                default:
+                    break;
+            }
+            
+        }, std::placeholders::_1, std::placeholders::_2));
+        
+        auto privacyBtn = static_cast<ui::Button*>(loginLayer->layer->getChildByName("Button_4"));
+        privacyBtn->addClickEventListener(std::bind([=](){
+            Application::getInstance()->openURL("http://baidu.com");
+        }));
+        
+        base::Singleton<BasisUtil>::get()->setAppBool(AK_MUTE, true);
     }
-    
     
     loginLayer->loginBtn = static_cast<ui::Button*>(loginLayer->layer->getChildByName("BTN_LOGIN"));
     loginLayer->loginBtn->addClickEventListener(CC_CALLBACK_1(LoginLayer::loginBtnClick, loginLayer));
@@ -87,14 +110,14 @@ LoginLayer::showLogin( bool needPwd)
 void
 LoginLayer::loginBtnClick(Ref*)
 {
-    loginBtn->setEnabled(false);
-    gNotificationLayer->loading();
-    
     std::string username = name->getString();
     std::string pwd = passwd->getString();
     //login
     if(username.size()&&pwd.size())
     {
+        loginBtn->setEnabled(false);
+        gNotificationLayer->loading();
+        
         base::Singleton<BasisUtil>::get()->setAppString(AK_UNAME, username);
         base::Singleton<BasisUtil>::get()->setAppString(AK_PASSWD, pwd);
         std::string deviceId;
@@ -103,11 +126,17 @@ LoginLayer::loginBtnClick(Ref*)
     //create without passwd input
     else if(username.size()&&pwd.size()==0)
     {
+        loginBtn->setEnabled(false);
+        gNotificationLayer->loading();
+        
         pwd = randomPasswd(6);
         base::Singleton<BasisUtil>::get()->setAppString(AK_UNAME, username);
         base::Singleton<BasisUtil>::get()->setAppString(AK_PASSWD, pwd);
         
         control::LoginController::create(username, pwd, std::bind(&LoginLayer::createOk, this, std::placeholders::_1, std::placeholders::_2));
+    }else
+    {
+        gNotificationLayer->onError("请输入至少一个字~~");
     }
 
 }
