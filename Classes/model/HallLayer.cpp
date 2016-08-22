@@ -34,7 +34,7 @@
 USING_NS_CC;
 using namespace codechiev;
 
-HallLayer::HallLayer(){}
+HallLayer::HallLayer():mapid(0){}
 
 bool
 HallLayer::init()
@@ -76,12 +76,14 @@ HallLayer::init()
     auto btnExchange = static_cast<ui::Button*>(hallLayer->getChildByName("BTN_Exchange"));
     btnExchange->addClickEventListener(std::bind(&HallLayer::onExchange, this, std::placeholders::_1));
     
-    auto mapFrame = static_cast<Node*>(hallLayer->getChildByName("MapFrame"));
-    pageViewMap = CycleShowPageView::create();
-    pageViewMap->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
-    mapFrame->addChild(pageViewMap);
+    auto btnPve = static_cast<ui::Button*>(hallLayer->getChildByName("BTN_Pve"));
+    btnPve->addClickEventListener(std::bind(&HallLayer::onPve, this, std::placeholders::_1));
+    //auto mapFrame = static_cast<Node*>(hallLayer->getChildByName("MapFrame"));
+    //pageViewMap = CycleShowPageView::create();
+    //pageViewMap->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+    //mapFrame->addChild(pageViewMap);
     
-    for(int i=0; i<4; i++)
+    /*for(int i=0; i<4; i++)
     {
         auto map = MapImgView::create();
         map->retain();//for page turnning
@@ -89,7 +91,7 @@ HallLayer::init()
         map->mapid = i;
         pageViewMap->setContentSize(map->getContentSize());
         pageViewMap->addPage(map);
-    }
+    }*/
     
     //==========update user information event================
     auto listener = EventListenerCustom::create(kUserEvent, [=](EventCustom* event){
@@ -117,10 +119,10 @@ HallLayer::gameAlloc(Ref* ref)
     roles.push_back(cardsel[1]->frame->id);
     roles.push_back(cardsel[2]->frame->id);
     roles.push_back(cardsel[3]->frame->id);
-    int mapid(0);
-    auto page = pageViewMap->getItem(pageViewMap->getCurrentPageIndex());
-    if(page)
-        mapid = static_cast<MapImgView*>(page)->mapid;
+
+    //auto page = pageViewMap->getItem(pageViewMap->getCurrentPageIndex());
+    //if(page)
+        //mapid = static_cast<MapImgView*>(page)->mapid;
     codechiev::control::GameController::allocate(mapid, roles,
     std::bind([=](HallLayer* hall,rapidjson::Document& doc, bool ok){
         if(ok&&doc["data"].GetBool())
@@ -145,13 +147,38 @@ HallLayer::gamePveAlloc()
     roles.push_back(cardsel[2]->frame->id);
     roles.push_back(cardsel[3]->frame->id);
     
-    int mapid(0);
-    auto page = pageViewMap->getItem(pageViewMap->getCurrentPageIndex());
-    if(page)
-        mapid = static_cast<MapImgView*>(page)->mapid;
+    //auto page = pageViewMap->getItem(pageViewMap->getCurrentPageIndex());
+    //if(page)
+        //mapid = static_cast<MapImgView*>(page)->mapid;
     codechiev::control::GameController::pveAlloc(mapid, roles, nullptr);
     
     stopCountDown();
+}
+
+void
+HallLayer::onPve(Ref* ref)
+{
+    auto layer = CSLoader::createNode(kPveUILayer);
+    this->addChild(layer);
+    
+    auto btnBg = static_cast<ui::Button*>(layer->getChildByName("BTN_Bg"));
+    btnBg->addClickEventListener(std::bind([=](Node* node){
+        node->removeFromParent();
+    }, layer));
+    
+    auto list = static_cast<ui::ListView*>(layer->getChildByName("ListView_1"));
+    for(int i=1; i<=4; i++)
+    {
+        std::string btnStr = StringUtils::format("Button_%d", i);
+        auto btn = static_cast<ui::Button*>(list->getChildByName(btnStr));
+        btn->addClickEventListener(std::bind([=](Node* node, HallLayer* hall, int mid){
+            hall->mapid = mid;
+            hall->gamePveAlloc();
+            
+            node->removeFromParent();
+        }, layer, this, i));
+    }
+    
 }
 
 void

@@ -17,6 +17,8 @@
 
 namespace codechiev
 {
+    static const char kPveUILayer[] = "ui/PveUILayer.csb";
+    
     class IntroLayer;
     
     class HallLayer : public cocos2d::Layer
@@ -38,6 +40,7 @@ namespace codechiev
         void onRecieve(cocos2d::Ref*);
         void onIntro(cocos2d::Ref*);
         void onExchange(cocos2d::Ref*);
+        void onPve(cocos2d::Ref*);
         
         cocos2d::ui::Text *txName;
         cocos2d::ui::Text *txScore;
@@ -45,8 +48,8 @@ namespace codechiev
         cocos2d::ui::Text *txRevieve;
         cocos2d::ui::Button *btnBegin;
         cocos2d::ui::Button *btnConfig;
-        cocos2d::ui::PageView *pageViewMap;
-        
+        //cocos2d::ui::PageView *pageViewMap;
+        int mapid;
     private:
     };
 
