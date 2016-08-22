@@ -9,6 +9,7 @@
 #include "MessageLayer.hpp"
 #include "RedeemLayer.hpp"
 #include "NavigateLayer.hpp"
+#include "CardLayer.hpp"
 #include "User.h"
 #include "../codechiev/BasisUtil.h"
 #include "../model/Effect.hpp"
@@ -290,7 +291,15 @@ void
 BufuBtn::onPress(cocos2d::Ref *)
 {
     this->setEnabled(false);
-    control::LoginController::bufuRecv(this->key, CmdCallbackBegin
+    
+    codechiev::control::LoginController::roles_vec roles;
+    CardUnit **cardsel = gMenuLayer->cardLayer->cardsel;
+    roles.push_back(cardsel[0]->frame->id);
+    roles.push_back(cardsel[1]->frame->id);
+    roles.push_back(cardsel[2]->frame->id);
+    roles.push_back(cardsel[3]->frame->id);
+    
+    control::LoginController::bufuRecv(this->key, 0, roles, CmdCallbackBegin
                                        if(ok)
                                        {
                                            gNotificationLayer->onError("不服");

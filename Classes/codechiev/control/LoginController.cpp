@@ -163,8 +163,23 @@ LoginController::exchange(int score, const CmdCallback::callback &cb)
 }
 
 void
-LoginController::bufuRecv(std::string key, const CmdCallback::callback & cb)
+LoginController::bufuRecv(std::string key, int map, const roles_vec& roles, const CmdCallback::callback & cb)
 {
-    //codechiev::BaseCmd cmd(codechiev::cmd::CmdGame, cb);
+    codechiev::BaseCmd cmd(codechiev::cmd::CmdGameBufu, cb);
+
+    
+    cmd.writer.Key("map");
+    cmd.writer.Int(map);
+    
+    cmd.writer.Key("roles");
+    cmd.writer.StartArray();
+    for( roles_vec::const_iterator it=roles.begin();
+        it!=roles.end();
+        it++)
+    {
+        cmd.writer.Int(*it);
+    }
+    
+    cmd.writer.EndArray();
 }
 
