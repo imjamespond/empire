@@ -59,7 +59,7 @@ namespace codechiev
 			,Command("com.metasoft.empire.vo.UpgradeRequest" , "UserUpgrade")
 			,Command("com.metasoft.empire.vo.VoidRequest" , "UserReset")
 			,Command("com.metasoft.empire.vo.VoidRequest" , "UserRecieve")
-			,Command("com.metasoft.empire.vo.ChatReqFangPiao" , "GameBufu")
+			,Command("com.metasoft.empire.vo.ChatReqInvite" , "GameBufu")
 			,Command("com.metasoft.empire.vo.ChatReqFangPiao" , "GameFangPiao")
 			,Command("com.metasoft.empire.vo.RedeemRecvReq" , "GameRecvFangPiao")
 			,Command("com.metasoft.empire.vo.ExchangeReq" , "UserExchange")
