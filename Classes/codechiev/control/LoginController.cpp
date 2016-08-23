@@ -166,7 +166,8 @@ void
 LoginController::bufuRecv(std::string key, int map, const roles_vec& roles, const CmdCallback::callback & cb)
 {
     codechiev::BaseCmd cmd(codechiev::cmd::CmdGameBufu, cb);
-
+    cmd.writer.Key("key");
+    cmd.writer.String(key.c_str());
     
     cmd.writer.Key("map");
     cmd.writer.Int(map);

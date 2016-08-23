@@ -199,6 +199,7 @@ MessageLayer::addInvite(Layout *layout, const rapidjson::Value & data)
     const rapidjson::Value& msg = data["msg"];
     const rapidjson::Value& name = data["name"];
     std::string namestr = name.IsNull()?"":name.GetString();
+    const rapidjson::Value& key = data["key"];
     bool self(false);
     if(namestr.length()&&namestr.compare(base::Singleton<User>::get()->name)==0)
     {
@@ -230,6 +231,7 @@ MessageLayer::addInvite(Layout *layout, const rapidjson::Value & data)
     if(self)
         btnAccept->setEnabled(false);
     btnAccept->setPosition(btn->getPosition());
+    btnAccept->key=key.GetString();
     btnAccept->addClickEventListener(std::bind(&BufuBtn::onPress,
                                                btnAccept, std::placeholders::_1));
     layout->addChild(btnAccept);
