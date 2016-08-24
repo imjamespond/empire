@@ -9,6 +9,7 @@ class GameSceneLayer;
 class GameMenuLayer;
 
 extern GameLayer *gGameLayer;
+extern GameSceneLayer *gGameScene;
 extern cocos2d::Scene *gScene;
 extern cocos2d::Scene *createGameScene();
 
@@ -32,7 +33,7 @@ public:
 	void cameraReset();
     void reset();
 
-	GameSceneLayer *gameScene;
+	//GameSceneLayer *gameScene;
     GameMenuLayer *gameMenu;
     codechiev::Camera camera;
 private:

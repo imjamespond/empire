@@ -37,7 +37,7 @@ YanWangAnim::play()
         base::Singleton<ActionQueue>::get()->playNext();
         role->idle();
         
-        gGameLayer->gameScene->runAction(ScreenShake::create(.5, 5));
+        gGameScene->runAction(ScreenShake::create(.5, 5));
         gGameLayer->gameMenu->updateHealth(*enemy, hp, maxhp);
     }, role->role, enemy, hp, enemy->maxHp) ), nullptr));
     /*
@@ -144,7 +144,7 @@ SphinxAnim::play()
         base::Singleton<ActionQueue>::get()->playNext();
         role->idle();
         
-        gGameLayer->gameScene->runAction(ScreenShake::create(.5, 5));
+        gGameScene->runAction(ScreenShake::create(.5, 5));
         gGameLayer->gameMenu->updateHealth(*enemy, hp, maxhp);
     }, role->role, enemy, hp, enemy->maxHp) ), nullptr));
 }
@@ -173,7 +173,7 @@ LinLuAnim::play()
         base::Singleton<ActionQueue>::get()->playNext();
         role->idle();
         
-        gGameLayer->gameScene->runAction(ScreenShake::create(.5, 5));
+        gGameScene->runAction(ScreenShake::create(.5, 5));
         gGameLayer->gameMenu->updateHealth(*enemy, hp, maxhp);
     }, role->role, enemy, hp, enemy->maxHp) ), nullptr));
     gNotificationLayer->onError(StringUtils::format("LinLuAnim hurt: %d", hurt));
@@ -198,7 +198,7 @@ JiShenAnim::play()
         base::Singleton<ActionQueue>::get()->playNext();
         role->idle();
         
-        gGameLayer->gameScene->runAction(ScreenShake::create(.5, 5));
+        gGameScene->runAction(ScreenShake::create(.5, 5));
         gGameLayer->gameMenu->updateHealth(*self, hp, maxhp);
     }, role->role, self, hp, self->maxHp) ), nullptr));
     gNotificationLayer->onError(StringUtils::format("JiShenAnim heal: %d",this->heal));
@@ -223,7 +223,7 @@ KnightAnim::play()
         base::Singleton<ActionQueue>::get()->playNext();
         role->idle();
         
-        gGameLayer->gameScene->runAction(ScreenShake::create(.5, 5));
+        gGameScene->runAction(ScreenShake::create(.5, 5));
         gGameLayer->gameMenu->updateHealth(*enemy, hp, maxhp);
     }, role->role, enemy, hp, enemy->maxHp) ), nullptr));
     gNotificationLayer->onError(StringUtils::format("KnightAnim hurt: %d",this->hurt));
@@ -240,7 +240,7 @@ AngelAnim::play()
         base::Singleton<ActionQueue>::get()->playNext();
         role->idle();
         
-        gGameLayer->gameScene->runAction(ScreenShake::create(.5, 5));
+        gGameScene->runAction(ScreenShake::create(.5, 5));
         gGameLayer->gameMenu->updateHealth(*enemy, hp, maxhp);
     }, role->role, self, hp, self->maxHp) ), nullptr));
     gNotificationLayer->onError(StringUtils::format("AngelAnim heal: %d",this->heal));
@@ -257,7 +257,7 @@ TitanAnim::play()
         base::Singleton<ActionQueue>::get()->playNext();
         role->idle();
         
-        gGameLayer->gameScene->runAction(ScreenShake::create(.5, 5));
+        gGameScene->runAction(ScreenShake::create(.5, 5));
         gGameLayer->gameMenu->updateHealth(*enemy, hp, maxhp);
     }, role->role, enemy, hp, enemy->maxHp) ), nullptr));
     gNotificationLayer->onError(StringUtils::format("TitanAnim hurt: %d",this->hurt));

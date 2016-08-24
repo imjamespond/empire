@@ -41,19 +41,21 @@ GameMenuLayer::init()
     Node* info = battleMenu->getChildByName("Node_Info");
     //info->setPosition(gCenter);
     
+    Node* infoOfScene = gGameScene->battleLayer->getChildByName("Node_Info");;
+    
     Game::Player *player0 = &game->player0;
     Game::Player *player1 = &game->player1;
-    player0->healthBar = static_cast<ui::LoadingBar*>(info->getChildByName("LoadingBar_0"));
-    player1->healthBar = static_cast<ui::LoadingBar*>(info->getChildByName("LoadingBar_1"));
+    player0->healthBar = static_cast<ui::LoadingBar*>(infoOfScene->getChildByName("LoadingBar_0"));
+    player1->healthBar = static_cast<ui::LoadingBar*>(infoOfScene->getChildByName("LoadingBar_1"));
     
-    player0->healthBarBg = static_cast<ui::LoadingBar*>(info->getChildByName("LoadingBarBg_0"));
-    player1->healthBarBg = static_cast<ui::LoadingBar*>(info->getChildByName("LoadingBarBg_1"));
+    player0->healthBarBg = static_cast<ui::LoadingBar*>(infoOfScene->getChildByName("LoadingBarBg_0"));
+    player1->healthBarBg = static_cast<ui::LoadingBar*>(infoOfScene->getChildByName("LoadingBarBg_1"));
     
     player0->txPlayer = static_cast<ui::Text*>(info->getChildByName("TX_P0"));
     player1->txPlayer = static_cast<ui::Text*>(info->getChildByName("TX_P1"));
     
-    player0->txHealth = static_cast<ui::TextBMFont*>(info->getChildByName("TBMF_P0_Health"));
-    player1->txHealth = static_cast<ui::TextBMFont*>(info->getChildByName("TBMF_P1_Health"));
+    player0->txHealth = static_cast<ui::TextBMFont*>(infoOfScene->getChildByName("TBMF_P0_Health"));
+    player1->txHealth = static_cast<ui::TextBMFont*>(infoOfScene->getChildByName("TBMF_P1_Health"));
     
     blue = static_cast<Sprite*>(battleMenu->getChildByName("Blue"));
     red = static_cast<Sprite*>(battleMenu->getChildByName("Red"));
@@ -125,8 +127,8 @@ GameMenuLayer::updateHealth(const codechiev::Game::Player& player, int hp, int m
 void
 GameMenuLayer::showSwapMenu(bool show)
 {
-    blue->setPositionY(gVisibleSize.y+blue->getContentSize().height);
-    red->setPositionY(-red->getContentSize().height);
+    red->setPositionY(gVisibleSize.y+red->getContentSize().height);
+    blue->setPositionY(-blue->getContentSize().height);
     
     if(show)
     {
@@ -149,8 +151,8 @@ GameMenuLayer::showSwapMenu(bool show)
             addSwapMenu(7);
         }
         
-        blue->runAction(MoveTo::create(1.0f,Vec2(0,gVisibleSize.y)));
-        red->runAction(MoveTo::create(1.0f,Vec2::ZERO));
+        red->runAction(MoveTo::create(1.0f,Vec2(0,gVisibleSize.y)));
+        blue->runAction(MoveTo::create(1.0f,Vec2::ZERO));
     }
 }
 
@@ -243,8 +245,8 @@ SwapBtn::init()
         
         if (rect.containsPoint(locationInNode))
         {
-            gGameLayer->gameScene->sendSwap(target->type);
-            gGameLayer->gameScene->stopTimer();
+            gGameScene->sendSwap(target->type);
+            gGameScene->stopTimer();
             gGameLayer->gameMenu->showSwapMenu(false);
             target->getListener()->setEnabled(false);
             return true;
@@ -297,7 +299,7 @@ GameMenuLayer::updateTimer(float dt)
         updateTimerText();
     }else if(self->opertime==0)
     {
-        gGameLayer->gameScene->onTimeup();
+        gGameScene->onTimeup();
         self->opertime=2;
         updateTimerText();
     }else if(self->opertime<0)

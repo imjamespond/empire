@@ -40,7 +40,7 @@ public:
     void sendExpired();
 
 	//variable
-    Sonic *sonic;
+    //Sonic *sonic;
 	//RoleLayer *man;
     //codechiev::CountDown *cd;
     codechiev::Game *game;
@@ -49,8 +49,8 @@ public:
     cocos2d::Sprite *map;
 	cocos2d::Size sceneSize;
 	//cocos2d::Vec2 sceneCenter;
+    cocos2d::Node* battleLayer;
 private:
-    cocos2d::Node* battleLayer_;
     bool sendingSwap_;
 };
 

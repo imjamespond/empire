@@ -18,6 +18,7 @@ extern Size designResolutionSize;
 Scene *gScene(nullptr);
 GameLayer *gGameLayer(nullptr);
 MenuLayer *gMenuLayer(nullptr);
+GameSceneLayer *gGameScene(nullptr);
 NotificationLayer *gNotificationLayer(nullptr);
 
 Scene* createGameScene()
@@ -45,7 +46,7 @@ Scene* createGameScene()
 	return gScene;
 }
 
-GameLayer::GameLayer(): camera(), gameScene(nullptr),
+GameLayer::GameLayer(): camera(),
 cameraMoving_(false), cameraFollowing_(false)
 {
 	auto listener = EventListenerTouchAllAtOnce::create();
@@ -76,10 +77,10 @@ GameLayer::init()
 	this->scheduleUpdate();
 	
 	//gameScene
-	gameScene = GameSceneLayer::create();
-    gameScene->setAnchorPoint(Vec2::ZERO);
-    gameScene->setPosition(Vec2::ZERO);//set orgin
-    this->addChild(gameScene);
+	gGameScene = GameSceneLayer::create();
+    gGameScene->setAnchorPoint(Vec2::ZERO);
+    gGameScene->setPosition(Vec2::ZERO);//set orgin
+    this->addChild(gGameScene);
     
     //gameMenu
     gameMenu = GameMenuLayer::create();
@@ -96,9 +97,9 @@ GameLayer::update(float delta)
     //cameraFollow();
     if (camera.getCameraDirty())
     {
-        Vec2 pos(gameScene->getPosition());
+        Vec2 pos(gGameScene->getPosition());
         camera.transform(pos);
-        gameScene->setPosition(pos);
+        gGameScene->setPosition(pos);
         camera.resetCameraDirty();
     }
     //Update method will be called automatically every frame if "scheduleUpdate" is called, and the node is "live".
@@ -189,7 +190,7 @@ GameLayer::sceneScale(const cocos2d::Vec2& preLoc1, const cocos2d::Vec2& preLoc2
 
 	float preLength = (preLoc1 - preLoc2).length();
 	float length = (loc1 - loc2).length();
-	float zoom = gameScene->getScale() + (length - preLength) * 0.005f;
+	float zoom = gGameScene->getScale() + (length - preLength) * 0.005f;
 
 	if (zoom > 5.0f) {
 		zoom = 5.0f;
@@ -197,10 +198,10 @@ GameLayer::sceneScale(const cocos2d::Vec2& preLoc1, const cocos2d::Vec2& preLoc2
 		zoom = 1.0f;
 	}
     
-	cameraBoundUpdate(gameScene->sceneSize ,zoom);
-	Vec2 from = zoom/ gameScene->getScale() * (camera.getPos() + gCenter)-gCenter;
+	cameraBoundUpdate(gGameScene->sceneSize ,zoom);
+	Vec2 from = zoom/ gGameScene->getScale() * (camera.getPos() + gCenter)-gCenter;
 	camera.setPos(from);
-    gameScene->setScale(zoom);
+    gGameScene->setScale(zoom);
 	cameraReset();
 }
 

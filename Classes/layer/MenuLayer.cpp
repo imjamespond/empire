@@ -94,7 +94,7 @@ MenuLayer::gameEvent(rapidjson::Document &doc)
         game_->initGame(doc);
         
         gGameLayer->gameMenu->initGameMenu();//before scene because of removing previous oper btn
-        gGameLayer->gameScene->initScene();
+        gGameScene->initScene();
         
         gGameLayer->setVisible(true);
     }

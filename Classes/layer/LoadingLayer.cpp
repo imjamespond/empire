@@ -95,7 +95,7 @@ LoadingLayer::update(float dt)
             //======registEvent======
             codechiev::base::Singleton<CmdCallback>::get()->registEvent("event.game.expired", std::bind( &GameMenuLayer::expiredEvent, gGameLayer->gameMenu, std::placeholders::_1));
             //======registEvent======
-            base::Singleton<CmdCallback>::get()->registEvent("event.game.combat", std::bind( &GameSceneLayer::combatEvent, gGameLayer->gameScene, std::placeholders::_1));
+            base::Singleton<CmdCallback>::get()->registEvent("event.game.combat", std::bind( &GameSceneLayer::combatEvent, gGameScene, std::placeholders::_1));
         }
         if(!gMenuLayer)
         {

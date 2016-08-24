@@ -24,7 +24,7 @@ using namespace rapidjson;
 #define ROUND_COUNT 10
 
 GameSceneLayer::GameSceneLayer() :
-battleLayer_(nullptr),
+battleLayer(nullptr),
 sendingSwap_(false),
 map(nullptr),
 sceneSize(0, 0)
@@ -52,12 +52,12 @@ GameSceneLayer::init()
 		return false;
 	}
     
-    battleLayer_ = CSLoader::createNode(kBattleLayer);
-    this->addChild(battleLayer_);
+    battleLayer = CSLoader::createNode(kBattleLayer);
+    this->addChild(battleLayer,99);
     
-	sonic = Sonic::create();
-    sonic->getEmitter()->stopSystem();
-	this->addChild(sonic);
+	//sonic = Sonic::create();
+    //sonic->getEmitter()->stopSystem();
+	//this->addChild(sonic);
 	return true;
 }
 
@@ -86,13 +86,13 @@ GameSceneLayer::initPlayer(Game::Player *player)
         if(player==game->getSelf())
         {
             name = StringUtils::format("Node_%d",i+5);
-            roles[i]->role->setFlippedX(true);
         }
         else
         {
             name = StringUtils::format("Node_%d",i+1);
+            roles[i]->role->setFlippedX(true);
         }
-        roles[i]->setPosition( battleLayer_->getChildByName(name.c_str())->getPosition());
+        roles[i]->setPosition( battleLayer->getChildByName(name)->getPosition());
         this->addChild(roles[i]);
     }
 }

@@ -95,7 +95,7 @@ GameEndLayer::hide(Touch* touch, Event* event)
     
     gMenuLayer->navLayer->setVisible(true);
     gMenuLayer->hallLayer->btnBegin->setEnabled(true);
-    gGameLayer->gameScene->reset();
+    gGameScene->reset();
     gGameLayer->setVisible(false);
     this->removeFromParent();
     

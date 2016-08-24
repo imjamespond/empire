@@ -173,7 +173,7 @@ initRedeemFrame(CardFrame *frame, Node *posNode, const CardStruct& card, const R
 
     //card image
     frame->spriteFrame = Sprite::createWithSpriteFrameName(card.src.c_str());
-    frame->spriteFrame->setScale(3);
+    //frame->spriteFrame->setScale(3);
     frame->spriteFrame->setPosition(cardFrameMask->getPosition());
     frame->clip->addChild(frame->spriteFrame);
     //card frame mask
