@@ -39,7 +39,7 @@ GameMenuLayer::init()
     
     //info pannel
     Node* info = battleMenu->getChildByName("Node_Info");
-    info->setPosition(gCenter);
+    //info->setPosition(gCenter);
     
     Game::Player *player0 = &game->player0;
     Game::Player *player1 = &game->player1;

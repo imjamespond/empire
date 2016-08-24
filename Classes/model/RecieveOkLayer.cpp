@@ -246,7 +246,7 @@ initRecievOkFrame(CardFrame *frame, Node *posNode, const CardStruct& card, const
 
     //card image
     frame->spriteFrame = Sprite::createWithSpriteFrameName(card.src.c_str());
-    frame->spriteFrame->setScale(3);
+    frame->spriteFrame->setScale(1.5);
     frame->spriteFrame->setPosition(Vec2::ZERO);
     frame->clip->addChild(frame->spriteFrame);
     //card frame mask

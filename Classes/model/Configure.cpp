@@ -40,6 +40,9 @@ Configure::init()
     auto posLayer = CSLoader::createNode(kConfigPosLayer);
     this->initModal( static_cast<Layer*>(CSLoader::createNode(kConfigLayer)));
     
+    auto btnService = static_cast<ui::Button*>(modalLayer->getChildByName("Button_1"));
+    btnService->addClickEventListener(std::bind(&Configure::onService, this, std::placeholders::_1));
+    
     /*auto btnDebug = static_cast<ui::Button*>(modalLayer->getChildByName("BTN_Debug"));
     btnDebug->addClickEventListener(std::bind([=](Ref* ref){
         static bool v(1);
@@ -157,4 +160,31 @@ Configure::changePasswd(ui::RadioButton* radioButton, int index, ui::RadioButton
         
         editPasswd->setEnabled(false);
     }
+}
+
+void
+Configure::onService(cocos2d::Ref *)
+{
+    auto layer = ServiceLayer::create();
+    layer->setVisible(false);
+    gMenuLayer->addChild(layer,999);
+    layer->doModal();
+}
+
+
+bool
+ServiceLayer::init()
+{
+    if(!ModalLayer::init())
+    {
+        return false;
+    }
+    
+    this->initModal( static_cast<Layer*>(CSLoader::createNode(kServiceLayer)));
+    modalLayer->setPosition(Vec2::ZERO);
+    
+    auto close=static_cast<ui::Button*>(modalLayer->getChildByName("BTN_Close"));
+    close->addClickEventListener(std::bind(&ModalLayer::onClose, this, std::placeholders::_1));
+    
+    return true;
 }

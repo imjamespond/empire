@@ -158,27 +158,10 @@ HallLayer::gamePveAlloc()
 void
 HallLayer::onPve(Ref* ref)
 {
-    auto layer = CSLoader::createNode(kPveUILayer);
-    this->addChild(layer);
-    
-    auto btnBg = static_cast<ui::Button*>(layer->getChildByName("BTN_Bg"));
-    btnBg->addClickEventListener(std::bind([=](Node* node){
-        node->removeFromParent();
-    }, layer));
-    
-    auto list = static_cast<ui::ListView*>(layer->getChildByName("ListView_1"));
-    for(int i=1; i<=4; i++)
-    {
-        std::string btnStr = StringUtils::format("Button_%d", i);
-        auto btn = static_cast<ui::Button*>(list->getChildByName(btnStr));
-        btn->addClickEventListener(std::bind([=](Node* node, HallLayer* hall, int mid){
-            hall->mapid = mid;
-            hall->gamePveAlloc();
-            
-            node->removeFromParent();
-        }, layer, this, i));
-    }
-    
+    auto pve = PveLayer::create();
+    pve->initBtn(this);
+    gMenuLayer->addChild(pve);
+    pve->doModal();
 }
 
 void
@@ -264,8 +247,36 @@ IntroLayer::init()
     
     this->initModal( static_cast<Layer*>(CSLoader::createNode(kIntroLayer)));
     
-    auto close=static_cast<ui::Button*>(modalLayer->getChildByName("BTN_Close"));
-    close->addClickEventListener(std::bind(&IntroLayer::onClose, this, std::placeholders::_1));
-    
     return true;
+}
+
+bool
+PveLayer::init()
+{
+    if(!ModalLayer::init())
+    {
+        return false;
+    }
+    
+    this->initModal( static_cast<Layer*>(CSLoader::createNode(kPveUILayer)));
+    modalLayer->setPosition(Vec2::ZERO);
+
+    return true;
+}
+
+void
+PveLayer::initBtn(HallLayer* hall)
+{
+    auto list = static_cast<ui::ListView*>(modalLayer->getChildByName("ListView_1"));
+    for(int i=1; i<=4; i++)
+    {
+        std::string btnStr = StringUtils::format("Button_%d", i);
+        auto btn = static_cast<ui::Button*>(list->getChildByName(btnStr));
+        btn->addClickEventListener(std::bind([=](ModalLayer* modal, HallLayer* hall, int mid){
+            hall->mapid = mid;
+            hall->gamePveAlloc();
+            
+            modal->undoModal();
+        }, this, hall, i));
+    }
 }

@@ -68,6 +68,16 @@ namespace codechiev
         
         virtual bool init();
     };
+    
+    class PveLayer : public ModalLayer
+    {
+    public:
+        CREATE_FUNC(PveLayer);
+        
+        virtual bool init();
+        
+        void initBtn(HallLayer*);
+    };
 }
 
 #endif /* HallLayer_hpp */

@@ -43,7 +43,7 @@ ExchangeLayer::init()
 void
 ExchangeLayer::exchange(int score)
 {
-    control::LoginController::exchange(0, CmdCallbackBeginWithData
+    control::LoginController::exchange(score, CmdCallbackBeginWithData
                                        if(ok){
                                            gNotificationLayer->onError("兑换成功");
                                            RecieveOkLayer::show(gMenuLayer, data);

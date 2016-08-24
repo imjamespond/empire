@@ -14,6 +14,7 @@
 #include <ui/CocosGUI.h>
 
 static const char kConfigPosLayer[] = "ui/ConfigPosLayer.csb";
+static const char kServiceLayer[] = "ui/ServiceLayer.csb";
 
 namespace codechiev
 {
@@ -28,6 +29,7 @@ namespace codechiev
         
         void changePasswd(cocos2d::ui::RadioButton*, int, cocos2d::ui::RadioButtonGroup::EventType);
         void quit(cocos2d::Ref* );
+        void onService(cocos2d::Ref *);
         
         cocos2d::ui::Button* btnChange;
         cocos2d::ui::Button* btnQuit;
@@ -39,6 +41,13 @@ namespace codechiev
         
     };
     
+    class ServiceLayer : public ModalLayer
+    {
+    public:
+        CREATE_FUNC(ServiceLayer);
+        
+        virtual bool init();
+    };
 }
 
 #endif /* Configure_hpp */
