@@ -143,7 +143,7 @@ LoadingLayer::onLoading()
     base::Singleton<CardConfig>::get()->init();
 
     //play audio
-    if(base::Singleton<BasisUtil>::get()->getAppBool(AK_MUTE))
+    if(!base::Singleton<BasisUtil>::get()->getAppBool(AK_MUTE))
     {
         float vol = base::Singleton<BasisUtil>::get()->getAppFloat(AK_VOL);
         AudioManager::setVolumn(vol==0?1:vol);

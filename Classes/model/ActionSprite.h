@@ -24,6 +24,9 @@ namespace codechiev
         RoleStruct():id(0),type(0){}
         std::string name;
         std::string description;
+        std::string profession;
+        std::string skillName;
+        std::string skill;
         int id;
         int type;
         struct AnimationStruct walk;

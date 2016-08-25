@@ -66,9 +66,18 @@ AnimationConfig::init()
         assert(!name.isNull());
         roleStruct.name =name.asString();
         
-        Value& desc = role["desc"];
+        Value& desc = role["descri"];
         if(!desc.isNull())
-        roleStruct.description =desc.asString();
+            roleStruct.description =desc.asString();
+        Value& profession = role["profession"];
+        if(!profession.isNull())
+            roleStruct.profession =profession.asString();
+        Value& skill = role["skill"];
+        if(!skill.isNull())
+            roleStruct.skill =skill.asString();
+        Value& skillName = role["skillName"];
+        if(!skillName.isNull())
+            roleStruct.skillName =skillName.asString();
         
         Value& type = role["type"];
         assert(!type.isNull());

@@ -66,8 +66,8 @@ GameSceneLayer::initScene()
 {
     initTiledMap();
     
-    initPlayer(&game->player0);
-    initPlayer(&game->player1);
+    initPlayer(&game->player0,0);
+    initPlayer(&game->player1,1);
     
     //timer
     startTimer();
@@ -76,21 +76,21 @@ GameSceneLayer::initScene()
     gGameLayer->cameraReset();
 }
 void
-GameSceneLayer::initPlayer(Game::Player *player)
+GameSceneLayer::initPlayer(Game::Player *player, int pos)
 {
     for(int i=0; i<4; i++)
     {
         Role** roles = player->roles;
         assert(roles[i]->id);
         std::string name;
-        if(player==game->getSelf())
-        {
-            name = StringUtils::format("Node_%d",i+5);
-        }
-        else
+        if(pos)
         {
             name = StringUtils::format("Node_%d",i+1);
             roles[i]->role->setFlippedX(true);
+        }
+        else
+        {
+            name = StringUtils::format("Node_%d",i+5);
         }
         roles[i]->setPosition( battleLayer->getChildByName(name)->getPosition());
         this->addChild(roles[i]);
@@ -131,6 +131,9 @@ GameSceneLayer::startTimer()
     if(self&&self->petrify==0)
     {
         gGameLayer->gameMenu->showSwapMenu();
+    }else
+    {
+        sendSwap(0);
     }
     
     //check buff

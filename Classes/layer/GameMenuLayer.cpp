@@ -62,15 +62,12 @@ GameMenuLayer::init()
     player0->txTimer = static_cast<ui::Text*>(red->getChildByName("Text_Timer"));
     player1->txTimer = static_cast<ui::Text*>(blue->getChildByName("Text_Timer"));
     
-    for(int i=0; i<(sizeof redopers)/sizeof(oper_struct); i++)
+    for(int i=0; i<(sizeof player0->opers)/sizeof(oper_struct); i++)
     {
-        redopers[i].node = red->getChildByName(StringUtils::format("Node_1_%d", i));
+        player0->opers[i].node = red->getChildByName(StringUtils::format("Node_1_%d", i));
+        player1->opers[i].node = blue->getChildByName(StringUtils::format("Node_1_%d", i));
     }
-    for(int i=0; i<(sizeof blueopers)/sizeof(oper_struct); i++)
-    {
-        blueopers[i].node = blue->getChildByName(StringUtils::format("Node_1_%d", i));
-    }
-    
+
     return true;
 }
 
@@ -90,26 +87,23 @@ GameMenuLayer::initGameMenu()
     updateHealth(game->player0, game->player0.hp, game->player0.maxHp);
     updateHealth(game->player1, game->player1.hp, game->player1.maxHp);
 
-    for(int i=0; i<(sizeof redopers)/sizeof(oper_struct); i++)
+    for(int i=0; i<(sizeof player0->opers)/sizeof(oper_struct); i++)
     {
-        if(redopers[i].btn)
+        if(player0->opers[i].btn)
         {
-            redopers[i].btn->removeFromParent();
-            redopers[i].btn=nullptr;
+            player0->opers[i].btn->removeFromParent();
+            player0->opers[i].btn=nullptr;
         }
-    }
-    for(int i=0; i<(sizeof blueopers)/sizeof(oper_struct); i++)
-    {
-        if(blueopers[i].btn)
+        if(player1->opers[i].btn)
         {
-            blueopers[i].btn->removeFromParent();
-            blueopers[i].btn=nullptr;
+            player1->opers[i].btn->removeFromParent();
+            player1->opers[i].btn=nullptr;
         }
     }
 }
 
 void
-GameMenuLayer::updateHealth(const codechiev::Game::Player& player, int hp, int maxhp)
+GameMenuLayer::updateHealth(const Game::Player& player, int hp, int maxhp)
 {
     float proportion = static_cast<float>(hp)/static_cast<float>(maxhp);
     float red = 255*(3-proportion*4);
@@ -118,7 +112,7 @@ GameMenuLayer::updateHealth(const codechiev::Game::Player& player, int hp, int m
     player.healthBar->setColor( Color3B(MIN(255,MAX(0,red)), MIN(255,MAX(0,green)), 0));
     player.healthBarBg->setOpacity(255);
     player.healthBarBg->runAction( Sequence::create(FadeOut::create(1.0f),
-                                            CallFunc::create(std::bind([](const codechiev::Game::Player* player){
+                                    CallFunc::create(std::bind([](const Game::Player* player){
         player->healthBarBg->setPercent(player->healthBar->getPercent());
     }, &player )), nullptr) );
     player.txHealth->setString(StringUtils::format("%d", hp) );
@@ -159,31 +153,34 @@ GameMenuLayer::showSwapMenu(bool show)
 void
 GameMenuLayer::addSwapMenu(int pos)
 {
-    Game::Player* self = game->getSelf();
+    //Game::Player* self = game->getSelf();
     Game::Player* enemy = game->getEnemy();
 
-    for(int i=0; i<(sizeof redopers)/sizeof(oper_struct); i++)
+    for(int i=0; i<(sizeof game->player0.opers)/sizeof(oper_struct); i++)
     {
-        if(!redopers[i].btn &&self)
+        if(!game->player0.opers[i].btn)
         {
             auto sprite = SwapBtn::create();
-            sprite->type = self->swap[pos];
-            sprite->setTexture(StringUtils::format(kImgRedOper, self->swap[pos]));
-            redopers[i].btn = sprite;
-            redopers[i].node->addChild(sprite) ;
+            if(enemy&&enemy==&game->player0)
+                sprite->getListener()->setEnabled(false);
+            sprite->type = game->player0.swap[pos];
+            sprite->setTexture(StringUtils::format(kImgRedOper, game->player0.swap[pos]));
+            game->player0.opers[i].btn = sprite;
+            game->player0.opers[i].node->addChild(sprite) ;
             break;
         }
     }
-    for(int i=0; i<(sizeof blueopers)/sizeof(oper_struct); i++)
+    for(int i=0; i<(sizeof game->player1.opers)/sizeof(oper_struct); i++)
     {
-        if(!blueopers[i].btn &&enemy)
+        if(!game->player1.opers[i].btn )
         {
             auto sprite = SwapBtn::create();
-            sprite->getListener()->setEnabled(false);
-            sprite->type = enemy->swap[pos];
-            sprite->setTexture(StringUtils::format(kImgBlueOper, enemy->swap[pos]));
-            blueopers[i].btn = sprite;
-            blueopers[i].node->addChild(sprite) ;
+            if(enemy&&enemy==&game->player1)
+                sprite->getListener()->setEnabled(false);
+            sprite->type = game->player1.swap[pos];
+            sprite->setTexture(StringUtils::format(kImgBlueOper, game->player1.swap[pos]));
+            game->player1.opers[i].btn = sprite;
+            game->player1.opers[i].node->addChild(sprite) ;
             break;
         }
     }
@@ -204,29 +201,18 @@ GameMenuLayer::expiredEvent(rapidjson::Document &doc)
     }
 }
 void
-GameMenuLayer::removeBlueBtn(int type)
+GameMenuLayer::removeOperBtn(Game::Player& player, int type)
 {
-    for(int i=0; i<(sizeof blueopers)/sizeof(oper_struct) ; i++)
+    for(int i=0; i<(sizeof player.opers)/sizeof(oper_struct) ; i++)
     {
-        if(blueopers[i].btn && blueopers[i].btn->type == type)
+        if(player.opers[i].btn && player.opers[i].btn->type == type)
         {
-            blueopers[i].btn->removeFromParent();
-            blueopers[i].btn = nullptr;
+            player.opers[i].btn->removeFromParent();
+            player.opers[i].btn = nullptr;
         }
     }
 }
-void
-GameMenuLayer::removeRedBtn(int type)
-{
-    for(int i=0; i<(sizeof redopers)/sizeof(oper_struct) ; i++)
-    {
-        if(redopers[i].btn && redopers[i].btn->type == type)
-        {
-            redopers[i].btn->removeFromParent();
-            redopers[i].btn = nullptr;
-        }
-    }
-}
+
 
 bool
 SwapBtn::init()

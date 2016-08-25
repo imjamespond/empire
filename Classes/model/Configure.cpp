@@ -85,11 +85,11 @@ Configure::init()
         {
             case ui::CheckBox::EventType::SELECTED:
                 AudioManager::play(AD_BACKGROUND);
-                base::Singleton<BasisUtil>::get()->setAppBool(AK_MUTE, true);
+                base::Singleton<BasisUtil>::get()->setAppBool(AK_MUTE, false);
                 break;
             case ui::CheckBox::EventType::UNSELECTED:
                 AudioManager::stop(AD_BACKGROUND);
-                base::Singleton<BasisUtil>::get()->setAppBool(AK_MUTE, false);
+                base::Singleton<BasisUtil>::get()->setAppBool(AK_MUTE, true);
                 break;
             default:
                 break;
@@ -97,7 +97,7 @@ Configure::init()
         
     }, std::placeholders::_1, std::placeholders::_2));
     //play audio
-    if(!base::Singleton<BasisUtil>::get()->getAppBool(AK_MUTE))
+    if(base::Singleton<BasisUtil>::get()->getAppBool(AK_MUTE))
     {
         ckMute->setSelected(false);
     }

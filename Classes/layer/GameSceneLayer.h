@@ -21,7 +21,7 @@ public:
 	virtual void onExit();
 
 	void initScene();
-    void initPlayer(codechiev::Game::Player*);
+    void initPlayer(codechiev::Game::Player*, int);
 	void initTiledMap();
     void reset();
 	bool checkPosition(const cocos2d::Vec2&);
@@ -29,7 +29,7 @@ public:
 	//void repositionSprite(float dt);
     void combatEvent(const rapidjson::Document &);
     void combatAnimQueue();
-    void combatAnimAdd(codechiev::Game::Player *, codechiev::Game::Player *,const rapidjson::Value& , const rapidjson::Value& );
+    void combatAnimAdd(codechiev::Game::Player *, codechiev::Game::Player *,const rapidjson::Value&);
     void combatAnimEnd();
     void swapAnim(std::vector<int> , codechiev::Game::Player& );
     //void end();

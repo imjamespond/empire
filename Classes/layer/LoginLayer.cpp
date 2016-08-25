@@ -81,8 +81,6 @@ LoginLayer::showLogin( bool needPwd)
         privacyBtn->addClickEventListener(std::bind([=](){
             Application::getInstance()->openURL("http://baidu.com");
         }));
-        
-        base::Singleton<BasisUtil>::get()->setAppBool(AK_MUTE, true);
     }
     
     loginLayer->loginBtn = static_cast<ui::Button*>(loginLayer->layer->getChildByName("BTN_LOGIN"));

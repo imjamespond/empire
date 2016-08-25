@@ -30,17 +30,10 @@ public:
     void showSwapMenu(bool show=true);
     void addSwapMenu(int);
     void expiredEvent(rapidjson::Document &);
-    void removeBlueBtn(int);
-    void removeRedBtn(int);
+    void removeOperBtn(codechiev::Game::Player& ,int);
 
-    struct oper_struct
-    {
-        oper_struct():node(nullptr), btn(nullptr){}
-        cocos2d::Node* node;
-        SwapBtn* btn;
-    };
-    oper_struct blueopers[5];
-    oper_struct redopers[5];
+    //oper_struct blueopers[5];
+    //oper_struct redopers[5];
     cocos2d::Sprite* blue;
     cocos2d::Sprite* red;
 

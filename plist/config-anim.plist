@@ -9,6 +9,14 @@
 			<integer>16</integer>
 			<key>name</key>
 			<string>美杜莎</string>
+			<key>profess</key>
+			<string>特殊位</string>
+			<key>descri</key>
+			<string>我要把你们统统变成石头 因为我只喜欢张润坤~</string>
+			<key>skillname</key>
+			<string>石化</string>
+			<key>skill</key>
+			<string>将正对自己的单位 石化持续一回合（很恐怖的）</string>
 			<key>type</key>
 			<integer>8</integer>
 			<key>data</key>
@@ -75,6 +83,14 @@
 			<integer>1</integer>
 			<key>name</key>
 			<string>阎王</string>
+			<key>profess</key>
+			<string>攻击位</string>
+			<key>descri</key>
+			<string>普天之下 莫非王土 生灵死魂 皆为奴仆</string>
+			<key>skillname</key>
+			<string>威压</string>
+			<key>skill</key>
+			<string>缩短下回合敌方准备时间2秒</string>
 			<key>type</key>
 			<integer>1</integer>
 			<key>data</key>
@@ -141,6 +157,14 @@
 			<integer>2</integer>
 			<key>name</key>
 			<string>无常</string>
+			<key>profess</key>
+			<string>防御位</string>
+			<key>descri</key>
+			<string>人皆有两面 吾仅仅表里如一</string>
+			<key>skillname</key>
+			<string>阴阳之面</string>
+			<key>skill</key>
+			<string>增加我方准备时间2秒</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>data</key>
@@ -207,6 +231,14 @@
 			<integer>3</integer>
 			<key>name</key>
 			<string>孟婆</string>
+			<key>profess</key>
+			<string>回复位</string>
+			<key>descri</key>
+			<string>同学这有好玩的 你不来么~呵呵呵</string>
+			<key>skillname</key>
+			<string>轮回</string>
+			<key>skill</key>
+			<string>不正对攻击位时 发动技能每回合回复生命6% （可叠加）</string>
 			<key>type</key>
 			<integer>4</integer>
 			<key>data</key>
@@ -273,6 +305,14 @@
 			<integer>4</integer>
 			<key>name</key>
 			<string>牛头</string>
+			<key>profess</key>
+			<string>特殊位</string>
+			<key>descri</key>
+			<string>据说有机会看见我的搭档 不知道真的假的</string>
+			<key>skillname</key>
+			<string>战栗</string>
+			<key>skill</key>
+			<string>减少敌方2秒准备时间</string>
 			<key>type</key>
 			<integer>8</integer>
 			<key>data</key>
@@ -339,6 +379,14 @@
 			<integer>5</integer>
 			<key>name</key>
 			<string>胡狼神</string>
+			<key>profess</key>
+			<string>攻击位</string>
+			<key>descri</key>
+			<string>吾乃底比斯最强战士！黑色肌肤定制服饰!实力与时尚并存!</string>
+			<key>skillname</key>
+			<string>引魂</string>
+			<key>skill</key>
+			<string>我方生命越多攻击力越高，加成范围0%—100%</string>
 			<key>type</key>
 			<integer>1</integer>
 			<key>data</key>
@@ -405,6 +453,14 @@
 			<integer>6</integer>
 			<key>name</key>
 			<string>狮身人面兽</string>
+			<key>profess</key>
+			<string>防御位</string>
+			<key>descri</key>
+			<string>人类总是关注我过分华丽的脸，而遗忘我更加华丽的实力，所以。。。。。。</string>
+			<key>skillname</key>
+			<string>共振</string>
+			<key>skill</key>
+			<string>如敌我双方前排三个单位效果一致对敌方造成伤害为我方攻击单位的攻击力  若又正对敌方攻击单位则追加敌方攻击力的50%</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>data</key>
@@ -471,6 +527,14 @@
 			<integer>7</integer>
 			<key>name</key>
 			<string>法老王</string>
+			<key>profess</key>
+			<string>恢复位</string>
+			<key>descri</key>
+			<string>我其实想把绷带去掉，这不符合我高贵的身份。</string>
+			<key>skillname</key>
+			<string>不朽</string>
+			<key>skill</key>
+			<string>如敌我双方非前排单位，效果位置一致恢复生命20%</string>
 			<key>type</key>
 			<integer>4</integer>
 			<key>data</key>
@@ -537,6 +601,14 @@
 			<integer>8</integer>
 			<key>name</key>
 			<string>艳后</string>
+			<key>profess</key>
+			<string>特殊位</string>
+			<key>descri</key>
+			<string>世间至美之物，莫过于孤之身。</string>
+			<key>skillname</key>
+			<string>倾倒</string>
+			<key>skill</key>
+			<string>我方全体发生倾倒（似水中月镜中花）</string>
 			<key>type</key>
 			<integer>8</integer>
 			<key>data</key>
@@ -603,6 +675,14 @@
 			<integer>9</integer>
 			<key>name</key>
 			<string>领路者</string>
+			<key>profess</key>
+			<string>攻击位</string>
+			<key>descri</key>
+			<string>死是通向新生的捷径 让世界重生吧</string>
+			<key>skillname</key>
+			<string>死之道</string>
+			<key>skill</key>
+			<string>随攻击次数增加 每次攻击力上升初始的40%</string>
 			<key>type</key>
 			<integer>1</integer>
 			<key>data</key>
@@ -669,6 +749,14 @@
 			<integer>10</integer>
 			<key>name</key>
 			<string>羽蛇神</string>
+			<key>profess</key>
+			<string>防御位</string>
+			<key>descri</key>
+			<string>！@#￥%……&amp;*（愚蠢的人看不懂我在说什么）</string>
+			<key>skillname</key>
+			<string>毒鳞</string>
+			<key>skill</key>
+			<string>被敌方攻击位攻击后 毒将慢慢侵蚀敌人 每回合减少总生命5%（可叠加）</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>data</key>
@@ -735,6 +823,14 @@
 			<integer>11</integer>
 			<key>name</key>
 			<string>祭神</string>
+			<key>profess</key>
+			<string>回复位</string>
+			<key>descri</key>
+			<string>祭品有两个要求  1活的  2人类</string>
+			<key>skillname</key>
+			<string>献祭</string>
+			<key>skill</key>
+			<string>不正对攻击位时 回复生命10% 且可以于我方任意单位调换位置</string>
 			<key>type</key>
 			<integer>4</integer>
 			<key>data</key>
@@ -801,6 +897,14 @@
 			<integer>12</integer>
 			<key>name</key>
 			<string>云神</string>
+			<key>profess</key>
+			<string>特殊位</string>
+			<key>descri</key>
+			<string>有人说我像猫头鹰 我一出手你就懂了脸不重要</string>
+			<key>skillname</key>
+			<string>乌云</string>
+			<key>skill</key>
+			<string>乌云遮住大地 一切变的模糊</string>
 			<key>type</key>
 			<integer>8</integer>
 			<key>data</key>
@@ -867,6 +971,14 @@
 			<integer>13</integer>
 			<key>name</key>
 			<string>骑士</string>
+			<key>profess</key>
+			<string>攻击位</string>
+			<key>descri</key>
+			<string>神的旨意 不可质疑</string>
+			<key>skillname</key>
+			<string>神谕</string>
+			<key>skill</key>
+			<string>正对敌方攻击位时 攻击力提高100%</string>
 			<key>type</key>
 			<integer>1</integer>
 			<key>data</key>
@@ -933,6 +1045,14 @@
 			<integer>14</integer>
 			<key>name</key>
 			<string>巨人</string>
+			<key>profess</key>
+			<string>防御位</string>
+			<key>descri</key>
+			<string>几百年忘了动了 身上怎么长青苔了</string>
+			<key>skillname</key>
+			<string>反震</string>
+			<key>skill</key>
+			<string>被敌方攻击位攻击时 给与敌方150%的伤害</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>data</key>
@@ -999,6 +1119,14 @@
 			<integer>15</integer>
 			<key>name</key>
 			<string>天使</string>
+			<key>profess</key>
+			<string>回复位</string>
+			<key>descri</key>
+			<string>神让我将爱洒满人间 其实就是每天混混日子</string>
+			<key>skillname</key>
+			<string>圣光</string>
+			<key>skill</key>
+			<string>回复生命35% 正对敌方攻击位时 无法回复</string>
 			<key>type</key>
 			<integer>4</integer>
 			<key>data</key>

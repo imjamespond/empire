@@ -17,6 +17,7 @@
 #include <ui/CocosGUI.h>
 
 class GameSceneLayer;
+class SwapBtn;
 
 namespace codechiev
 {
@@ -29,6 +30,13 @@ namespace codechiev
     class Game
     {
     public:
+        struct Operation
+        {
+            Operation():node(nullptr), btn(nullptr){}
+            cocos2d::Node* node;
+            SwapBtn* btn;
+        };
+        
         struct Player
         {
             Player():
@@ -70,6 +78,7 @@ namespace codechiev
             //int curswap;
             Role* roles[4];
             int swap[8];
+            Operation opers[5];
         };
 
         Game():self(nullptr),enemy(nullptr),state(0),turn(0),map(0){}
@@ -99,6 +108,8 @@ namespace codechiev
         static const int STATE_ANIM = 8;
     private:
     };
+    
+    typedef Game::Operation oper_struct;
     
     class GameAnim
     {

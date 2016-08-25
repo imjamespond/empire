@@ -36,32 +36,39 @@ GameSceneLayer::combatEvent(const Document &doc)
     const rapidjson::Value& oper1 = data["oper1"];
     const rapidjson::Value& swap0 = data["swap0"];
     const rapidjson::Value& swap1 = data["swap1"];
-    assert(!swap0.IsNull() && swap0.IsArray() );
-    assert(!swap1.IsNull() && swap1.IsArray() );
+    //assert(!swap0.IsNull() && swap0.IsArray() );
+    //assert(!swap1.IsNull() && swap1.IsArray() );
     const rapidjson::Value& gameAnim0 = data["anim0"];
     const rapidjson::Value& gameAnim1 = data["anim1"];
     assert(!gameAnim0.IsNull() && gameAnim0.IsArray() && !gameAnim1.IsNull() && gameAnim1.IsArray());
-    assert(gameAnim0.Size()==gameAnim1.Size());
+    //assert(gameAnim0.Size()==gameAnim1.Size());
     
     /*if(game->turn==turn)
     {
         return;
     }*/
     
-    gGameLayer->gameMenu->removeRedBtn(oper0.GetInt());
-    gGameLayer->gameMenu->removeBlueBtn(oper1.GetInt());
+    gGameLayer->gameMenu->removeOperBtn(game->player0, oper0.GetInt());
+    gGameLayer->gameMenu->removeOperBtn(game->player1, oper1.GetInt());
     
     //log("combatEvent resetBuff");
     game->player0.resetBuff();
     game->player1.resetBuff();
     
-    for(SizeType i=0; i<gameAnim0.Size(); i++)
+    for(SizeType i=0; i<3; i++)
     {
-        const rapidjson::Value& a0 = gameAnim0[i];
-        const rapidjson::Value& a1 = gameAnim1[i];
-        assert(!a0.IsNull()&&!a1.IsNull());
-        combatAnimAdd(&game->player0, &game->player1, a0, a1);
-        combatAnimAdd(&game->player1, &game->player0, a1, a0);
+        if(i<gameAnim0.Size())
+        {
+            const rapidjson::Value& a0 = gameAnim0[i];
+            combatAnimAdd(&game->player0, &game->player1, a0);
+        }
+        if(i<gameAnim1.Size())
+        {
+            const rapidjson::Value& a1 = gameAnim1[i];
+            combatAnimAdd(&game->player1, &game->player0, a1);
+        }
+        
+        //assert(!a0.IsNull()&&!a1.IsNull());
     }
     
     gNotificationLayer->onError(StringUtils::format("回合:%d", turn));
@@ -69,7 +76,7 @@ GameSceneLayer::combatEvent(const Document &doc)
     game->state = state;
     //animation
     ActionQueue* queue = base::Singleton<ActionQueue>::get();
-    if(swap0.Size())
+    if(!swap0.IsNull() && swap0.Size())
     {
         std::vector<int> ids;
         for(int i(0); i<swap0.Size(); i++)
@@ -78,7 +85,7 @@ GameSceneLayer::combatEvent(const Document &doc)
         }
         queue->addQueue(boost::bind(&GameSceneLayer::swapAnim, this, ids, game->player0));
     }
-    if(swap1.Size())
+    if(!swap1.IsNull() && swap1.Size())
     {
         std::vector<int> ids;
         for(int i(0); i<swap1.Size(); i++)
@@ -93,17 +100,17 @@ GameSceneLayer::combatEvent(const Document &doc)
 }
 
 void
-GameSceneLayer::combatAnimAdd(Game::Player *player0, Game::Player *player1,
-                              const rapidjson::Value& a0, const rapidjson::Value& a1)
+GameSceneLayer::combatAnimAdd(Game::Player *player0, Game::Player *player1, const rapidjson::Value& anim)
 {
-    int id0 = a0["id"].IsNull()?0 : a0["id"].GetInt();
-    int id1 = a1["id"].IsNull()?0 : a1["id"].GetInt();
+    int id0 = anim["id"].IsNull()?0 : anim["id"].GetInt();
+    int id1 = anim["tid"].IsNull()?0 : anim["tid"].GetInt();
+    //int id1 = a1["id"].IsNull()?0 : a1["id"].GetInt();
     
     Role *role0 = player0->getRole(id0);
     Role *role1 = player1->getRole(id1);
     assert(role0&&role1);
     
-    const rapidjson::Value& anim0 = a0["anim"];
+    const rapidjson::Value& anim0 = anim["anim"];
     //const rapidjson::Value& anim1 = a1["anim"];
     
     if(role0->id == Role::ID_YANWANG && !anim0.IsNull()){
