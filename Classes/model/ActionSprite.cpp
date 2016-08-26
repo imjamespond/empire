@@ -69,13 +69,13 @@ AnimationConfig::init()
         Value& desc = role["descri"];
         if(!desc.isNull())
             roleStruct.description =desc.asString();
-        Value& profession = role["profession"];
+        Value& profession = role["profess"];
         if(!profession.isNull())
             roleStruct.profession =profession.asString();
         Value& skill = role["skill"];
         if(!skill.isNull())
             roleStruct.skill =skill.asString();
-        Value& skillName = role["skillName"];
+        Value& skillName = role["skillname"];
         if(!skillName.isNull())
             roleStruct.skillName =skillName.asString();
         

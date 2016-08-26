@@ -37,22 +37,22 @@ GameMenuLayer::init()
     battleMenu->setPosition(Vec2::ZERO);
     this->addChild(battleMenu);
     
-    //info pannel
-    Node* info = battleMenu->getChildByName("Node_Info");
-    //info->setPosition(gCenter);
-    
-    Node* infoOfScene = gGameScene->battleLayer->getChildByName("Node_Info");;
-    
     Game::Player *player0 = &game->player0;
     Game::Player *player1 = &game->player1;
+    
+    //info pannel
+    ready = battleMenu->getChildByName("Node_Ready");
+    //info->setPosition(gCenter);
+    player0->txPlayer = static_cast<ui::Text*>(ready->getChildByName("Node0")->getChildByName("TX_P0"));
+    player1->txPlayer = static_cast<ui::Text*>(ready->getChildByName("Node1")->getChildByName("TX_P1"));
+    
+    Node* infoOfScene = gGameScene->battleLayer->getChildByName("Node_Info");
+    
     player0->healthBar = static_cast<ui::LoadingBar*>(infoOfScene->getChildByName("LoadingBar_0"));
     player1->healthBar = static_cast<ui::LoadingBar*>(infoOfScene->getChildByName("LoadingBar_1"));
     
     player0->healthBarBg = static_cast<ui::LoadingBar*>(infoOfScene->getChildByName("LoadingBarBg_0"));
     player1->healthBarBg = static_cast<ui::LoadingBar*>(infoOfScene->getChildByName("LoadingBarBg_1"));
-    
-    player0->txPlayer = static_cast<ui::Text*>(info->getChildByName("TX_P0"));
-    player1->txPlayer = static_cast<ui::Text*>(info->getChildByName("TX_P1"));
     
     player0->txHealth = static_cast<ui::TextBMFont*>(infoOfScene->getChildByName("TBMF_P0_Health"));
     player1->txHealth = static_cast<ui::TextBMFont*>(infoOfScene->getChildByName("TBMF_P1_Health"));
@@ -78,6 +78,11 @@ GameMenuLayer::initGameMenu()
     Game::Player *player1 = &game->player1;
     player0->txPlayer->setString(game->player0.name) ;
     player1->txPlayer->setString(game->player1.name) ;
+    ready->setVisible(true);
+    ready->runAction(Sequence::create(DelayTime::create(1),
+                                      CallFunc::create(std::bind([=](Node* node){
+        node->setVisible(false);
+    }, ready)), nullptr));
     
     if(player0->uid<0)
         player0->txTimer->setVisible(false);

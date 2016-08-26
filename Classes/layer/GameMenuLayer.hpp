@@ -36,7 +36,7 @@ public:
     //oper_struct redopers[5];
     cocos2d::Sprite* blue;
     cocos2d::Sprite* red;
-
+    cocos2d::Node* ready;
 public:
     void timerBegin(float);
     void timerStop();

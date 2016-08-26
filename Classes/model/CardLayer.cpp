@@ -296,11 +296,11 @@ CardDescLayer::show( CardFrame* f)
     auto txDesc = static_cast<ui::Text*>( cardDescLayer->modalLayer->getChildByName("Text_Desc"));
     txDesc->setString(role->description);
     auto txProfess = static_cast<ui::Text*>( cardDescLayer->modalLayer->getChildByName("Text_Profession"));
-    txProfess->setString(role->description);
+    txProfess->setString(role->profession);
     auto txSkillName = static_cast<ui::Text*>( cardDescLayer->modalLayer->getChildByName("Text_SkillName"));
-    txSkillName->setString(role->description);
+    txSkillName->setString(role->skillName);
     auto txSkill = static_cast<ui::Text*>( cardDescLayer->modalLayer->getChildByName("Text_Skill"));
-    txSkill->setString(role->description);
+    txSkill->setString(role->skill);
     
     auto txAttack = static_cast<ui::Text*>( cardDescLayer->modalLayer->getChildByName("Text_Attack"));
     txAttack->setString(StringUtils::format("%d", f->attack));

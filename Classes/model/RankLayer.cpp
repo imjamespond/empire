@@ -98,6 +98,7 @@ RankLayer::rankScore()
                 auto numsprite = static_cast<Sprite*>(rankNode->getChildByName("Sprite_Num")) ;
                 auto name = static_cast<ui::Text*>(rankNode->getChildByName("Text_Name")) ;
                 auto score = static_cast<ui::Text*>(rankNode->getChildByName("Text_Score")) ;
+                auto level = static_cast<ui::Text*>(rankNode->getChildByName("Text_Level")) ;
                 auto sprite = static_cast<Sprite*>(rankNode->getChildByName("Sprite_1")) ;
                 num->setString(StringUtils::format("%d", i+1));
                 if(i<3)
@@ -107,8 +108,10 @@ RankLayer::rankScore()
                 }
                 name->setString(val["name"].GetString());
                 const rapidjson::Value &scoreInt = val["score"];
+                const rapidjson::Value &lvInt = val["level"];
                 assert(!scoreInt.IsNull() && scoreInt.IsInt());
                 score->setString(StringUtils::format("%d", scoreInt.GetInt()));
+                level->setString(StringUtils::format("LV.%d", lvInt.GetInt()));
                 auto layout = ui::Layout::create();
                 layout->setContentSize(sprite->getContentSize());
                 layout->addChild(rankNode);
@@ -136,6 +139,7 @@ RankLayer::rankRedeem()
                 auto numsprite = static_cast<Sprite*>(rankNode->getChildByName("Sprite_Num")) ;
                 auto name = static_cast<ui::Text*>(rankNode->getChildByName("Text_Name")) ;
                 auto score = static_cast<ui::Text*>(rankNode->getChildByName("Text_Score")) ;
+                auto level = static_cast<ui::Text*>(rankNode->getChildByName("Text_Level")) ;
                 auto sprite = static_cast<Sprite*>(rankNode->getChildByName("Sprite_1")) ;
                 num->setString(StringUtils::format("%d", i+1));
                 if(i<3)
@@ -145,8 +149,10 @@ RankLayer::rankRedeem()
                 }
                 name->setString(val["name"].GetString());
                 const rapidjson::Value &scoreInt = val["score"];
+                const rapidjson::Value &lvInt = val["level"];
                 assert(!scoreInt.IsNull() && scoreInt.IsInt());
                 score->setString(StringUtils::format("%d", scoreInt.GetInt()));
+                level->setString(StringUtils::format("LV.%d", lvInt.GetInt()));
                 auto layout = ui::Layout::create();
                 layout->setContentSize(sprite->getContentSize());
                 layout->addChild(rankNode);
