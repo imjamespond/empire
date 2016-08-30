@@ -36,6 +36,7 @@ ActionQueue::addQueue(const action_func &func)
 void inline
 ActionQueue::playNext()
 {
+    cocos2d::log("ActionQueue playNext: %lu", actionQueue.size());
     if(actionQueue.size())
     {
         //pop previous
@@ -47,6 +48,7 @@ ActionQueue::playNext()
         action_func& func = actionQueue.front();
         if(func)
         {
+            cocos2d::log("ActionQueue func: %lu", actionQueue.size());
             func();
         }
     }

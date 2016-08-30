@@ -93,7 +93,7 @@ MenuLayer::gameEvent(rapidjson::Document &doc)
         navLayer->setVisible(false);
         game_->initGame(doc);
         
-        gGameLayer->gameMenu->initGameMenu();//before scene because of removing previous oper btn
+        gGameMenu->initGameMenu();//before scene because of removing previous oper btn
         gGameScene->initScene();
         
         gGameLayer->setVisible(true);
@@ -122,7 +122,7 @@ MenuLayer::gameEndEvent(rapidjson::Document &doc)
             queue->addQueue(boost::bind(&GameEndLayer::show, uid.GetInt64(), score.GetInt()));
         }else
         {
-            gGameLayer->gameMenu->timerStop();
+            gGameMenu->timerStop();
             GameEndLayer::show(uid.GetInt64(), score.GetInt());
         }
     }

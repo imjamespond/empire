@@ -10,6 +10,7 @@ class GameMenuLayer;
 
 extern GameLayer *gGameLayer;
 extern GameSceneLayer *gGameScene;
+extern GameMenuLayer *gGameMenu;
 extern cocos2d::Scene *gScene;
 extern cocos2d::Scene *createGameScene();
 
@@ -34,7 +35,7 @@ public:
     void reset();
 
 	//GameSceneLayer *gameScene;
-    GameMenuLayer *gameMenu;
+    //GameMenuLayer *gameMenu;
     codechiev::Camera camera;
 private:
 	void touchScale(cocos2d::Touch*, cocos2d::Touch*);

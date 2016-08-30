@@ -24,6 +24,7 @@ namespace codechiev
         AK_MUTE,
         AK_VOL,
         Ak_CARD_POS,
+        AK_GUIDE_PASSED,
         AK_TOTAL_SIZE,
     };
     static const char* kAppKeys[AK_TOTAL_SIZE] =
@@ -33,7 +34,8 @@ namespace codechiev
         "deviceId",
         "mute",
         "volumn",
-        "cardposition"
+        "cardposition",
+        "guidepassed"
     };
     
 	class BasisUtil

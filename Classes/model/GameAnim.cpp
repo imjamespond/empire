@@ -38,7 +38,7 @@ YanWangAnim::play()
         role->idle();
         
         gGameScene->runAction(ScreenShake::create(.5, 5));
-        gGameLayer->gameMenu->updateHealth(*enemy, hp, maxhp);
+        gGameMenu->updateHealth(*enemy, hp, maxhp);
     }, role->role, enemy, hp, enemy->maxHp) ), nullptr));
     /*
     scene->sonic->getEmitter()->resetSystem();
@@ -63,7 +63,6 @@ WuChangAnim::play()
     role->role->stopAllActions();
     role->role->runAction(Sequence::create(role->role->attackAction,
                                            CallFunc::create(std::bind([=](RoleSprite* role){
-        base::Singleton<ActionQueue>::get()->playNext();
         role->idle();
     }, role->role) ), cb,nullptr));
     
@@ -85,7 +84,7 @@ MengPoAnim::play()
         base::Singleton<ActionQueue>::get()->playNext();
         role->idle();
         
-        gGameLayer->gameMenu->updateHealth(*self, hp, maxhp);
+        gGameMenu->updateHealth(*self, hp, maxhp);
     }, role->role, self, hp, self->maxHp) ), cb,nullptr));
 }
 void
@@ -112,7 +111,7 @@ AnubisAnim::play()
         base::Singleton<ActionQueue>::get()->playNext();
         role->idle();
         
-        gGameLayer->gameMenu->updateHealth(*self, hp, maxhp);
+        gGameMenu->updateHealth(*self, hp, maxhp);
     }, role->role, enemy, hp, enemy->maxHp) ),nullptr));
     gNotificationLayer->onError(StringUtils::format("胡狼 hurt: %d",hurt));
 }
@@ -128,7 +127,7 @@ PharaohAnim::play()
         base::Singleton<ActionQueue>::get()->playNext();
         role->idle();
         
-        gGameLayer->gameMenu->updateHealth(*self, hp, maxhp);
+        gGameMenu->updateHealth(*self, hp, maxhp);
     }, role->role, self, hp, self->maxHp) ),nullptr));
     gNotificationLayer->onError(StringUtils::format("法老 恢复: %d",heal));
     
@@ -145,7 +144,7 @@ SphinxAnim::play()
         role->idle();
         
         gGameScene->runAction(ScreenShake::create(.5, 5));
-        gGameLayer->gameMenu->updateHealth(*enemy, hp, maxhp);
+        gGameMenu->updateHealth(*enemy, hp, maxhp);
     }, role->role, enemy, hp, enemy->maxHp) ), nullptr));
 }
 void
@@ -174,7 +173,7 @@ LinLuAnim::play()
         role->idle();
         
         gGameScene->runAction(ScreenShake::create(.5, 5));
-        gGameLayer->gameMenu->updateHealth(*enemy, hp, maxhp);
+        gGameMenu->updateHealth(*enemy, hp, maxhp);
     }, role->role, enemy, hp, enemy->maxHp) ), nullptr));
     gNotificationLayer->onError(StringUtils::format("LinLuAnim hurt: %d", hurt));
 }
@@ -199,7 +198,7 @@ JiShenAnim::play()
         role->idle();
         
         gGameScene->runAction(ScreenShake::create(.5, 5));
-        gGameLayer->gameMenu->updateHealth(*self, hp, maxhp);
+        gGameMenu->updateHealth(*self, hp, maxhp);
     }, role->role, self, hp, self->maxHp) ), nullptr));
     gNotificationLayer->onError(StringUtils::format("JiShenAnim heal: %d",this->heal));
 }
@@ -224,7 +223,7 @@ KnightAnim::play()
         role->idle();
         
         gGameScene->runAction(ScreenShake::create(.5, 5));
-        gGameLayer->gameMenu->updateHealth(*enemy, hp, maxhp);
+        gGameMenu->updateHealth(*enemy, hp, maxhp);
     }, role->role, enemy, hp, enemy->maxHp) ), nullptr));
     gNotificationLayer->onError(StringUtils::format("KnightAnim hurt: %d",this->hurt));
 }
@@ -241,7 +240,7 @@ AngelAnim::play()
         role->idle();
         
         gGameScene->runAction(ScreenShake::create(.5, 5));
-        gGameLayer->gameMenu->updateHealth(*enemy, hp, maxhp);
+        gGameMenu->updateHealth(*enemy, hp, maxhp);
     }, role->role, self, hp, self->maxHp) ), nullptr));
     gNotificationLayer->onError(StringUtils::format("AngelAnim heal: %d",this->heal));
 }
@@ -258,7 +257,7 @@ TitanAnim::play()
         role->idle();
         
         gGameScene->runAction(ScreenShake::create(.5, 5));
-        gGameLayer->gameMenu->updateHealth(*enemy, hp, maxhp);
+        gGameMenu->updateHealth(*enemy, hp, maxhp);
     }, role->role, enemy, hp, enemy->maxHp) ), nullptr));
     gNotificationLayer->onError(StringUtils::format("TitanAnim hurt: %d",this->hurt));
 }

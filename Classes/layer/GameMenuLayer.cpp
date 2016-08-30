@@ -33,7 +33,7 @@ GameMenuLayer::init()
         return false;
     }
     
-    auto battleMenu = CSLoader::createNode(kBattleMenu);
+    battleMenu = CSLoader::createNode(kBattleMenu);
     battleMenu->setPosition(Vec2::ZERO);
     this->addChild(battleMenu);
     
@@ -245,7 +245,7 @@ SwapBtn::init()
         {
             gGameScene->sendSwap(target->type);
             gGameScene->stopTimer();
-            gGameLayer->gameMenu->showSwapMenu(false);
+            gGameMenu->showSwapMenu(false);
             target->getListener()->setEnabled(false);
             return true;
         }
@@ -306,3 +306,30 @@ GameMenuLayer::updateTimer(float dt)
     }
 }
 
+
+bool
+GameMenuLayer::checkguidepassed()
+{
+    if(base::Singleton<BasisUtil>::get()->getAppBool(AK_GUIDE_PASSED) )
+        return true;
+    //else
+    base::Singleton<BasisUtil>::get()->setAppBool(AK_GUIDE_PASSED, true);
+    red->setPosition(Vec2(0,gVisibleSize.y));
+    blue->setPosition(Vec2::ZERO);
+    
+    auto btnGuide1 = static_cast<ui::Button*>(battleMenu->getChildByName("Button_Guide1"));
+    btnGuide1->setVisible(true);
+    auto btnGuide2 = static_cast<ui::Button*>(battleMenu->getChildByName("Button_Guide2"));
+    auto btnGuide3 = static_cast<ui::Button*>(battleMenu->getChildByName("Button_Guide3"));
+    btnGuide1->addClickEventListener(std::bind([=](Node* btn, Node* next){
+        btn->setVisible(false);
+        next->setVisible(true);}, btnGuide1, btnGuide2));
+    btnGuide2->addClickEventListener(std::bind([=](Node* btn, Node* next){
+        btn->setVisible(false);
+        next->setVisible(true);}, btnGuide2, btnGuide3));
+    btnGuide3->addClickEventListener(std::bind([=](Node* btn){
+        btn->setVisible(false);
+        gGameScene->startTimer();
+    }, btnGuide3));
+    return false;
+}

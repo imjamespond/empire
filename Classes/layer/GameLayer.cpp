@@ -19,6 +19,7 @@ Scene *gScene(nullptr);
 GameLayer *gGameLayer(nullptr);
 MenuLayer *gMenuLayer(nullptr);
 GameSceneLayer *gGameScene(nullptr);
+GameMenuLayer *gGameMenu(nullptr);
 NotificationLayer *gNotificationLayer(nullptr);
 
 Scene* createGameScene()
@@ -83,10 +84,10 @@ GameLayer::init()
     this->addChild(gGameScene);
     
     //gameMenu
-    gameMenu = GameMenuLayer::create();
-    gameMenu->setAnchorPoint(Vec2::ZERO);
-    gameMenu->setPosition(Vec2::ZERO);
-    this->addChild(gameMenu);
+    gGameMenu = GameMenuLayer::create();
+    gGameMenu->setAnchorPoint(Vec2::ZERO);
+    gGameMenu->setPosition(Vec2::ZERO);
+    this->addChild(gGameMenu);
 
 	return true;
 }

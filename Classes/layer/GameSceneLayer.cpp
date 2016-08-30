@@ -70,7 +70,11 @@ GameSceneLayer::initScene()
     initPlayer(&game->player1,1);
     
     //timer
-    startTimer();
+    //check needing guide
+    if(gGameMenu->checkguidepassed())
+    {
+        startTimer();
+    }
     
     gGameLayer->cameraBoundUpdate(sceneSize, 1.0f);
     gGameLayer->cameraReset();
@@ -122,6 +126,7 @@ GameSceneLayer::reset()
     map=nullptr;
 }
 
+
 void
 GameSceneLayer::startTimer()
 {
@@ -130,7 +135,7 @@ GameSceneLayer::startTimer()
     Game::Player* self = game->getSelf();
     if(self&&self->petrify==0)
     {
-        gGameLayer->gameMenu->showSwapMenu();
+        gGameMenu->showSwapMenu();
     }else
     {
         sendSwap(0);
@@ -145,7 +150,7 @@ GameSceneLayer::startTimer()
     
     if(Game::STATE_BEGIN & game->state)
     {
-        gGameLayer->gameMenu->timerBegin(ROUND_COUNT+self->prolong-self->shorten);
+        gGameMenu->timerBegin(ROUND_COUNT+self->prolong-self->shorten);
         self->prolong=0;
         self->shorten=0;
     }
@@ -154,7 +159,7 @@ GameSceneLayer::startTimer()
 void
 GameSceneLayer::stopTimer()
 {
-    gGameLayer->gameMenu->timerStop();
+    gGameMenu->timerStop();
 }
 
 void
@@ -186,6 +191,7 @@ GameSceneLayer::sendExpired()
 void
 GameSceneLayer::swapAnim(std::vector<int> ids, Game::Player& player)
 {
+    
     if(ids.size() == 8)
     {
         for(int i(0); i<4; i++)
@@ -207,10 +213,11 @@ GameSceneLayer::swapAnim(std::vector<int> ids, Game::Player& player)
         float dur1 = role1->walkTo( role0->getPosition(), 300);
         float dur0 = role0->walkTo( role1->getPosition(), 300);
         //std::swap(roles[swap0].role, roles[swap1].role);
+        log("swapAnim dur1: %g, dur0: %g", dur1, dur0);
         
         auto cb = CallFunc::create(std::bind([=](){
             base::Singleton<ActionQueue>::get()->playNext();
         }) );
-        this->runAction(Sequence::create(DelayTime::create(std::max(dur0, dur1)), cb, nullptr));
+        this->runAction(Sequence::create(DelayTime::create(/*std::max(dur0, dur1)*/2), cb, nullptr));
     }
 }

@@ -65,7 +65,7 @@ void
 GameEndLayer::show(int64_t uid, int score)
 {
     auto end = GameEndLayer::create();
-    gGameLayer->gameMenu->addChild(end);
+    gGameMenu->addChild(end);
     
     User* user = base::Singleton<User>::get();
     

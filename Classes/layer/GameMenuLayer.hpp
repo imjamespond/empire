@@ -31,12 +31,14 @@ public:
     void addSwapMenu(int);
     void expiredEvent(rapidjson::Document &);
     void removeOperBtn(codechiev::Game::Player& ,int);
+    bool checkguidepassed();
 
     //oper_struct blueopers[5];
     //oper_struct redopers[5];
     cocos2d::Sprite* blue;
     cocos2d::Sprite* red;
     cocos2d::Node* ready;
+    cocos2d::Node* battleMenu;
 public:
     void timerBegin(float);
     void timerStop();

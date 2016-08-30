@@ -48,8 +48,8 @@ GameSceneLayer::combatEvent(const Document &doc)
         return;
     }*/
     
-    gGameLayer->gameMenu->removeOperBtn(game->player0, oper0.GetInt());
-    gGameLayer->gameMenu->removeOperBtn(game->player1, oper1.GetInt());
+    gGameMenu->removeOperBtn(game->player0, oper0.GetInt());
+    gGameMenu->removeOperBtn(game->player1, oper1.GetInt());
     
     //log("combatEvent resetBuff");
     game->player0.resetBuff();
@@ -222,6 +222,8 @@ GameSceneLayer::combatAnimQueue()
         game->animDeq.erase(it);
         it = game->animDeq.begin();
     }
+    log("ActionQueue size: %lu", queue->actionQueue.size());
+    
 }
 
 void
