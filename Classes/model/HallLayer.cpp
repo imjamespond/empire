@@ -268,7 +268,7 @@ void
 PveLayer::initBtn(HallLayer* hall)
 {
     auto list = static_cast<ui::ListView*>(modalLayer->getChildByName("ListView_1"));
-    for(int i=1; i<=4; i++)
+    for(int i=0; i<4; i++)
     {
         std::string btnStr = StringUtils::format("Button_%d", i);
         auto btn = static_cast<ui::Button*>(list->getChildByName(btnStr));

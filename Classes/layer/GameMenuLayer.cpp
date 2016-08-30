@@ -74,6 +74,13 @@ GameMenuLayer::init()
 void
 GameMenuLayer::initGameMenu()
 {
+    //banner
+    auto redbanner = static_cast<Sprite*>(red->getChildByName("Sprite_Banner"));
+    auto bluebanner = static_cast<Sprite*>(blue->getChildByName("Sprite_Banner"));
+    redbanner->initWithFile(StringUtils::format("img/oper_%d.png", game->map) );
+    bluebanner->initWithFile(StringUtils::format("img/oper_%d.png", game->map) );
+    redbanner->setFlippedY(true);
+    
     Game::Player *player0 = &game->player0;
     Game::Player *player1 = &game->player1;
     player0->txPlayer->setString(game->player0.name) ;
