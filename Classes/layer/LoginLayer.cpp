@@ -79,7 +79,7 @@ LoginLayer::showLogin( bool needPwd)
         
         auto privacyBtn = static_cast<ui::Button*>(loginLayer->layer->getChildByName("Button_4"));
         privacyBtn->addClickEventListener(std::bind([=](){
-            Application::getInstance()->openURL("http://blog.sina.com.cn/s/blog_93fbdf0f0102wg19.html");
+            Application::getInstance()->openURL(kPrivacyTerm);
         }));
     }
     

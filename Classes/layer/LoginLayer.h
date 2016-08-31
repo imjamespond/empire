@@ -6,6 +6,7 @@
 
 static const char kLoginLayer[] = "ui/LoginLayer.csb";
 static const char kSignupLayer[] = "ui/SignupLayer.csb";
+static const char kPrivacyTerm[] = "http://blog.sina.com.cn/s/blog_93fbdf0f0102wg19.html";
 
 class LoginLayer : public cocos2d::Layer
 {

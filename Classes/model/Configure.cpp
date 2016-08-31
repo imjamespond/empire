@@ -9,6 +9,7 @@
 #include "Configure.hpp"
 #include "AudioManager.h"
 #include "HallLayer.hpp"
+#include "User.h"
 #include "../resource.h"
 #include "../layer/GameLayer.h"
 #include "../layer/MenuLayer.h"
@@ -42,6 +43,10 @@ Configure::init()
     
     auto btnService = static_cast<ui::Button*>(modalLayer->getChildByName("Button_1"));
     btnService->addClickEventListener(std::bind(&Configure::onService, this, std::placeholders::_1));
+    auto privacyBtn = static_cast<ui::Button*>(modalLayer->getChildByName("Button_2"));
+    privacyBtn->addClickEventListener(std::bind([=](){
+        Application::getInstance()->openURL(kPrivacyTerm);
+    }));
     
     /*auto btnDebug = static_cast<ui::Button*>(modalLayer->getChildByName("BTN_Debug"));
     btnDebug->addClickEventListener(std::bind([=](Ref* ref){
@@ -101,6 +106,9 @@ Configure::init()
     {
         ckMute->setSelected(false);
     }
+    
+    auto account = static_cast<ui::Text*>(modalLayer->getChildByName("Text_Account"));
+    account->setString(base::Singleton<User>::get()->name );
     
     auto passwd = static_cast<ui::ImageView*>(posLayer->getChildByName("Passwd"));
     const Size &editPasswdSize = passwd->getContentSize();
