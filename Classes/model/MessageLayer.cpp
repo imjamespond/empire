@@ -11,10 +11,11 @@
 #include "NavigateLayer.hpp"
 #include "CardLayer.hpp"
 #include "User.h"
-#include "../codechiev/BasisUtil.h"
 #include "../model/Effect.hpp"
+#include "../codechiev/BasisUtil.h"
 #include "../codechiev/control/ChatController.hpp"
 #include "../codechiev/control/LoginController.h"
+#include "../codechiev/control/GameController.hpp"
 #include "../resource.h"
 #include "../layer/GameLayer.h"
 #include "../layer/MenuLayer.h"
@@ -86,6 +87,18 @@ MessageLayer::init()
         redeemLayer->setVisible(false);
         gMenuLayer->addChild(redeemLayer);
         redeemLayer->doModal();
+    }, std::placeholders::_1));
+    
+    auto buwuBtn = static_cast<ui::Button*>(msgLayer->getChildByName("BTN_Buwu"));
+    buwuBtn->addClickEventListener(std::bind([=](Ref* ref){
+        codechiev::control::GameController::roles_vec roles;
+        CardUnit **cardsel = gMenuLayer->cardLayer->cardsel;
+        roles.push_back(cardsel[0]->frame->id);
+        roles.push_back(cardsel[1]->frame->id);
+        roles.push_back(cardsel[2]->frame->id);
+        roles.push_back(cardsel[3]->frame->id);
+        
+        codechiev::control::GameController::allocate(0, roles,nullptr);
     }, std::placeholders::_1));
     return true;
 }

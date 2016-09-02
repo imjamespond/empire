@@ -26,7 +26,7 @@ Network::connect()
 	wssocket_ = new network::WebSocket();
 
     //"ws://yuyouidea.com:9001/websocket"
-    //"ws://192.168.0.206:9001/websocket"
+    //"ws://192.168.0.252:9001/websocket"
 	if (!wssocket_->init(*this, "ws://yuyouidea.com:9001/websocket"))
 	{
 		CC_SAFE_DELETE(wssocket_);
