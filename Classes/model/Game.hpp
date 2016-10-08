@@ -71,7 +71,7 @@ namespace codechiev
             //ui
             cocos2d::ui::Text *txPlayer;
             cocos2d::ui::Text *txTimer;
-            cocos2d::ui::TextBMFont *txHealth;
+            cocos2d::ui::Text *txHealth;
             cocos2d::ui::LoadingBar *healthBar;
             cocos2d::ui::LoadingBar *healthBarBg;
             

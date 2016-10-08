@@ -54,8 +54,8 @@ GameMenuLayer::init()
     player0->healthBarBg = static_cast<ui::LoadingBar*>(infoOfScene->getChildByName("LoadingBarBg_0"));
     player1->healthBarBg = static_cast<ui::LoadingBar*>(infoOfScene->getChildByName("LoadingBarBg_1"));
     
-    player0->txHealth = static_cast<ui::TextBMFont*>(infoOfScene->getChildByName("TBMF_P0_Health"));
-    player1->txHealth = static_cast<ui::TextBMFont*>(infoOfScene->getChildByName("TBMF_P1_Health"));
+    player0->txHealth = static_cast<ui::Text*>(infoOfScene->getChildByName("Tx_P0_Health"));
+    player1->txHealth = static_cast<ui::Text*>(infoOfScene->getChildByName("Tx_P1_Health"));
     
     blue = static_cast<Sprite*>(battleMenu->getChildByName("Blue"));
     red = static_cast<Sprite*>(battleMenu->getChildByName("Red"));
