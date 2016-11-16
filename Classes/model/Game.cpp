@@ -105,6 +105,7 @@ Game::initGame(const Document & doc)
     const Value& p1 = data["player1"];
     initPlayer(player1, p1);
     
+    type = data["type"].IsNull()?0:data["type"].GetInt();
     turn = data["turn"].IsNull()?0:data["turn"].GetInt();
     map = data["map"].IsNull()?0:data["map"].GetInt();
     state = Game::STATE_BEGIN;

@@ -42,6 +42,10 @@ GameMenuLayer::init()
     
     //info pannel
     ready = battleMenu->getChildByName("Node_Ready");
+    closeBtn = static_cast<ui::Button*>(battleMenu->getChildByName("Button_Close"));
+    closeBtn->addClickEventListener(std::bind([=](){
+        control::GameController::exit(nullptr);
+    }));
     //info->setPosition(gCenter);
     player0->txPlayer = static_cast<ui::Text*>(ready->getChildByName("Node0")->getChildByName("TX_P0"));
     player1->txPlayer = static_cast<ui::Text*>(ready->getChildByName("Node1")->getChildByName("TX_P1"));
@@ -74,6 +78,9 @@ GameMenuLayer::init()
 void
 GameMenuLayer::initGameMenu()
 {
+    if(game->type)
+        this->closeBtn->setVisible(true);
+    
     //banner
     auto redbanner = static_cast<Sprite*>(red->getChildByName("Sprite_Banner"));
     auto bluebanner = static_cast<Sprite*>(blue->getChildByName("Sprite_Banner"));

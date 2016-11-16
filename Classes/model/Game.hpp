@@ -98,6 +98,7 @@ namespace codechiev
         Player* enemy;
         int state;
         int turn;
+        int type;
         int map;
         game_anim_deq animDeq;
         

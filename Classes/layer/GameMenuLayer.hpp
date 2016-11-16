@@ -39,6 +39,7 @@ public:
     cocos2d::Sprite* red;
     cocos2d::Node* ready;
     cocos2d::Node* battleMenu;
+    cocos2d::ui::Button* closeBtn;
 public:
     void timerBegin(float);
     void timerStop();

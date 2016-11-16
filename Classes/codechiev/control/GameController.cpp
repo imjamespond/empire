@@ -60,3 +60,9 @@ GameController::swap(int type, const CmdCallback::callback &cb)
     cmd.writer.Key("type");
     cmd.writer.Int(type);
 }
+
+void
+GameController::exit(const CmdCallback::callback & cb)
+{
+    BaseCmd cmd(cmd::CmdGameExit, cb);
+}

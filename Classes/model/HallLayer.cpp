@@ -76,8 +76,11 @@ HallLayer::init()
     auto btnExchange = static_cast<ui::Button*>(hallLayer->getChildByName("BTN_Exchange"));
     btnExchange->addClickEventListener(std::bind(&HallLayer::onExchange, this, std::placeholders::_1));
     
-    auto btnPve = static_cast<ui::Button*>(hallLayer->getChildByName("BTN_Pve"));
+    std::string thumbmap = base::Singleton<BasisUtil >::get()->getAppString(AK_THUMBMAP);
+    btnPve = static_cast<ui::Button*>(hallLayer->getChildByName("BTN_Pve"));
     btnPve->addClickEventListener(std::bind(&HallLayer::onPve, this, std::placeholders::_1));
+    if(thumbmap.length())
+        btnPve->loadTextures(thumbmap, thumbmap);
     //auto mapFrame = static_cast<Node*>(hallLayer->getChildByName("MapFrame"));
     //pageViewMap = CycleShowPageView::create();
     //pageViewMap->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
@@ -151,6 +154,9 @@ HallLayer::gamePveAlloc()
     //if(page)
         //mapid = static_cast<MapImgView*>(page)->mapid;
     codechiev::control::GameController::pveAlloc(mapid, roles, nullptr);
+    std::string thumbmap = cocos2d::StringUtils::format("ui-img/thumbmap%d.png", mapid);
+    btnPve->loadTextures(thumbmap, thumbmap);
+    base::Singleton<BasisUtil >::get()->setAppString(AK_THUMBMAP, thumbmap);
     
     stopCountDown();
 }

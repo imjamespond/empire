@@ -38,6 +38,7 @@ namespace codechiev
 			CmdGameRecvFangPiao,
 			CmdUserExchange,
 			CmdGameChatList,
+            CmdGameExit,
 			CmdSerialSize,
 		};
         
@@ -64,6 +65,7 @@ namespace codechiev
 			,Command("com.metasoft.empire.vo.RedeemRecvReq" , "GameRecvFangPiao")
 			,Command("com.metasoft.empire.vo.ExchangeReq" , "UserExchange")
 			,Command("com.metasoft.empire.vo.VoidRequest" , "GameChatList")
+            ,Command("com.metasoft.empire.vo.VoidRequest" , "GameExit")
         };
 
 	}

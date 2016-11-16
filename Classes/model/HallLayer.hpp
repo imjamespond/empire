@@ -48,6 +48,7 @@ namespace codechiev
         cocos2d::ui::Text *txRevieve;
         cocos2d::ui::Button *btnBegin;
         cocos2d::ui::Button *btnConfig;
+        cocos2d::ui::Button *btnPve;
         //cocos2d::ui::PageView *pageViewMap;
         int mapid;
     private:

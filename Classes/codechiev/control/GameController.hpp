@@ -25,6 +25,7 @@ namespace codechiev
             static void allocate(int, const roles_vec&, const CmdCallback::callback&);
             static void pveAlloc(int, const roles_vec&, const CmdCallback::callback&);
             static void swap(int , const CmdCallback::callback&);
+            static void exit(const CmdCallback::callback&);
         };
     }
 }
